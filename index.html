@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>Tutorial Version II</title>
+	<script type="text/javascript" src="./js/dependencies/node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="./js/app.js"></script>
+	<script type="text/javascript" src="./js/controllers/dataController.js"></script>
+	<script type="text/javascript" src="./js/controllers/runeController.js"></script>
+	<script type="text/javascript" src="./js/controllers/sigilController.js"></script>
+	<script type="text/javascript" src="./js/controllers/stoneController.js"></script>
+	<script type="text/javascript" src="./js/controllers/scrollController.js"></script>
+	<script type="text/javascript" src="./js/controllers/machineController.js"></script>
+
+</head>
+<body ng-app = "app">
+	<div ng-controller = "dataController as data">
+		
+		<div id="topWrap">
+			<div id="runes" ng-controller="runeController as runes">
+				<div ng-repeat="rune in data.runes track by $index"></div>
+	
+			</div> <!-- End of runesController -->
+			<div id="sigils" ng-controller="sigilController as sigils">
+				<div ng-repeat="sigil in data.sigils track by $index"></div>
+			</div> <!-- End of sigilController -->
+			<div id="stones" ng-controller="stoneController as stones">
+				<div ng-repeat="stone in data.stones track by $index"></div>
+			</div> <!-- End of stoneController -->
+		</div> <!-- End of topWrap -->
+		<div id="bottomWrap">
+			<div id="scroll" ng-controller="scrollController as scroll">
+				<div ng-repeat="scroll in data.scroll track by $index"></div>
+			</div> <!-- End of scroll -->
+			<div id="machine" ng-contorller="machineController as machine">
+				<div id="dropZone">
+
+				</div> <!-- End of dropZone -->
+				<div id="activeZone">
+					
+				</div> <!-- End of activeZone -->
+			</div> <!-- End of machine -->
+		</div> <!-- End of bottomWrap -->
+	</div> <!-- End of dataController-->
+
+</body>
+</html>
