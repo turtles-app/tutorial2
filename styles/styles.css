@@ -1,0 +1,100 @@
+/**{
+	border: 1px dotted black;
+}*/
+
+/*WRAP CSS*/
+.wrap{
+	min-height: 49%;
+}
+/*SCROLL CSS*/
+#scroll{
+	position:absolute;
+	border:3px solid green;
+	min-height:28%;
+	min-width: 97.5%;
+	left:1%;
+	top:5%;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+/*Stones and Sigils*/
+#stoneSigilWrap{
+	border:3px solid green;
+	display:inline-block;
+	position:relative;
+	min-height: 40%;
+	width:25%;
+	top:5%;
+	left:3%;
+	text-align: center;
+}
+
+/*Stones*/
+#stones{
+	border:2px solid red;
+	display:block;
+	position:relative;
+	height:6%;
+}
+
+/*Sigils*/
+#sigils{
+	border:2px solid blue;
+	display:block;
+	position:relative;
+	min-height:34%;
+}
+
+/*The Machine*/
+#machine{
+	border:3px solid green;
+	display:inline-block;
+	position:absolute;
+	min-width:60%;
+	min-height:45%;
+	max-width:70%;
+	margin-left: 5%;
+}
+
+/*Tabs of the Machine*/
+#tabs{
+	border:2px solid red;
+	min-height:10%;
+	position:absolute;
+	width:99.7%;
+}
+.machineTab{
+	border:2px dotted blue;
+	height:100%
+}
+
+/*Interaction zones of the Machine*/
+#zones{
+	position:absolute;
+	display:block;
+	min-height:80%;
+	width:90%;
+	left:5%;
+	top:18%;
+}
+
+#dropZone{
+	top:3%;
+	position:absolute;
+	border: 2px solid red;
+	display:inline-block;
+	min-height:50%;
+	width:20%;
+	left:2%;
+}
+
+#activeZone{
+	top:3%;
+	border: 2px solid green;
+	display:inline-block;
+	position:absolute;
+	min-height:90%;
+	left:24%;
+	min-width:68%;
+}
