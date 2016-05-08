@@ -4,10 +4,6 @@ app.controller("stoneController", ["toastr", "$scope", "$rootScope", function(to
 	self.flashingStones = []; //List of stones that are flashing
 	self.flashing = false; //Determines whether whole area flashes
 
-	$rootScope.$on("flashSigils", function () {
-		console.log("flashing sigils");
-	});
-
 
 
 	//////////////////////////////

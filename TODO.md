@@ -1,7 +1,15 @@
 TODO
 
 Step 1:
-	-	Present rune1
+	-	Create rune1
+		-	Create Rune Crafter
+			-	Image
+			-	Controller
+		-	Create drag and and drop:
+			-	Dragable directive
+			-	Droppable directive
+			-	Controller methods for dragging STONE & SIGIL
+			-	Controller methods for dropping into RUNE CRAFTER
 	-	Drag rune1 to drop zone
 	-	Explain parts
 		-	Stone1

@@ -7,24 +7,25 @@ app.controller("sigilController", ["$scope", "$rootScope", function($scope, $roo
 	//////////////////////////////
 	// Flashing Event Listeners //
 	//////////////////////////////
-		//Flash a group of stones
-		$rootScope.$on("flashSigils", function  (ev, arr) {
-			self.flashingSigils = [];
-			arr.forEach(function  (sigil) {
-				self.flashingSigils.push(sigil);
-			});
+	//Flash a group of sigils
+	$rootScope.$on("flashSigils", function  (ev, arr) {
+		self.flashingSigils = [];
+		arr.forEach(function  (sigil) {
+			self.flashingSigils.push(sigil);
 		});
-		//Clear all flashing sigils
-		$rootScope.$on("clearFlashSigils", function () {
-			self.flashingSigils = [];
-		});
-		//Flash sigil area
-		$rootScope.$on("flashSigilArea", function () {
-			self.flashing = true;
-		});
-		$rootScope.$on("clearFlashSigilArea", function () {
-			self.flashing = false;
-		});
+	});
+	//Clear all flashing sigils
+	$rootScope.$on("clearFlashSigils", function () {
+		self.flashingSigils = [];
+	});
+	//Flash sigil area
+	$rootScope.$on("flashSigilArea", function () {
+		self.flashing = true;
+	});
+	//Stop flashing sigil area
+	$rootScope.$on("clearFlashSigilArea", function () {
+		self.flashing = false;
+	});
 
 
 }]);
