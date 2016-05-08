@@ -1,0 +1,10 @@
+@-webkit-keyframes flashing {
+    0% {opacity: 1;}
+    50% {opacity: .4;}
+    100% {opacity: 1;}	
+}
+
+.flashing {
+	-webkit-animation: flashing 2s infinite;
+	animation: flashing 2s infinite;	
+}

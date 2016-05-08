@@ -30,12 +30,25 @@
 	text-align: center;
 }
 
+
 /*Stones*/
 #stones{
 	border:2px solid red;
 	display:block;
 	position:relative;
-	height:6%;
+	height:8%;
+}
+
+.stone {
+	position: relative;
+	bottom: 320%;
+	right: 45%;
+
+}
+.stoneImg {
+-ms-transform: scale(.1, .1); /* IE 9 */
+    -webkit-transform: scale(.1, .1); /* Safari */
+    transform: scale(.1, .1);	
 }
 
 /*Sigils*/
@@ -44,6 +57,16 @@
 	display:block;
 	position:relative;
 	min-height:34%;
+}
+
+.sigil {
+	position: relative;
+	width: 40%;
+}
+.sigil span {
+	position: absolute;
+	left: 48%;
+	top: 40%;
 }
 
 /*The Machine*/

@@ -15,24 +15,25 @@
 	<!-- controllers -->
 	<script type="text/javascript" src="./js/controllers/dataController.js"></script>
 	<script type="text/javascript" src="./js/controllers/runeController.js"></script>
-	<script type="text/javascript" src="./js/controllers/sigilController.js"></script>
 	<script type="text/javascript" src="./js/controllers/stoneController.js"></script>
-	<script type="text/javascript" src="./js/controllers/scrollController.js"></script>
+	<script type="text/javascript" src="./js/controllers/sigilController.js"></script>
+	<!--  <script type="text/javascript" src="./js/controllers/scrollController.js"></script> -->
 	<script type="text/javascript" src="./js/controllers/machineController.js"></script>
 
 	<!-- styles -->
 	<link rel="stylesheet" type="text/css" href="./styles/angular-toastr.css">
 	<link rel="stylesheet" type="text/css" href="./styles/styles.css">
+	<link rel="stylesheet" type="text/css" href="./styles/flashing.css">
 
 </head>
 <body ng-app = "app">
 	<div ng-controller = "dataController as data">
 		<div id="topWrap" class="wrap">
-			<div id="scroll" ng-controller="scrollController as scroll">
+			<div id="scroll">
 			Scroll of Wisdom
-				<div id="runes" ng-controller="runeController as runes">
+				<div id="runes" ng-controller="runeController as runes" ng-class="{'flashing': runes.flashing}">
 				
-					<div ng-repeat="rune in data.runes track by $index">
+					<div ng-repeat="rune in data.runes track by $index" ng-class="{'flashing': runes.flashingRunes.indexOf(rune) >= 0}">
 						<span ng-bind-html="rune.str | html"></span>
 					</div>
 				</div> <!-- End of runesController -->
@@ -42,20 +43,25 @@
 	
 		<div id="bottomWrap" class="wrap">
 			<div id="stoneSigilWrap">
-				<div id="stones" ng-controller="stoneController as stones">
+				<div id="stones" ng-controller="stoneController as stones" ng-class="{'flashing': stones.flashing}">
 				Stones of Knowledge
-					<div ng-repeat="stone in data.stones track by $index"></div>
+					<div ng-repeat="stone in data.stones track by $index" class="stone" ng-class="{'flashing': stones.flashingStones.indexOf(stone) >= 0}" >
+						<img class="stoneImg" ng-src="./img/hex-{{stone.color}}.png">
+					</div>
 				</div> <!-- End of stoneController -->
-				<div id="sigils" ng-controller="sigilController as sigils">
+				<div id="sigils" ng-controller="sigilController as sigils" ng-class="{'flashing': sigils.flashing}">
 				Sigils of Understanding
-					<div ng-repeat="sigil in data.sigils track by $index"></div>
+					<div ng-repeat="sigil in data.sigils track by $index" class="sigil" ng-class="{'flashing': sigils.flashingSigils.indexOf(sigil) >= 0}">
+						<span ng-bind-html="sigil.equivalents[sigil.eqActiveIndex] | html"></span>
+						<img ng-src="./img/square-{{sigil.color}}.png">
+					</div>
 				</div> <!-- End of sigilController -->
 			</div> <!-- End of stoneSigilWrap -->
 			
 			<div id="machine" ng-controller="machineController as machine">
 			The Machine
 				<div id="tabs">
-					<div ng-repeat="operation in machine.numberOfOperations" class="machineTab"> {{operation}}</div>
+					<div ng-repeat="operation in machine.numberOfOperations" class="machineTab">{{operation}}</div>
 				</div> <!-- End of tabs -->
 				<div id="zones">
 					<div id="dropZone">
