@@ -42,7 +42,7 @@ EXPOSITION 		- This is a RUNIC KEY. It is an ordinary rune, but you can use its 
 <!-- Introduce/use Inspector -->
 EXPOSITION		- This is the inspector. It can be used to inspect different objects.
 INSTRUCTION		- Drag the Runic Key into the Inspector.
-<!-- INSPECTOR			*	Engraved with ANY Sigil EXCEPT Alpha and embedded with ANY Stone -->
+##INSPECTOR		-*Runic Key* is engraved with ANY Sigil EXCEPT Alpha and embedded with ANY Stone
 <!-- Continued Inspection -->
 EXPOSITION		- You can drag other things into the Inspector
 INSTRUCTION		- Drag a Rune into the Inspector.
@@ -93,12 +93,13 @@ INSTRUCTION		- Craft the Runic Key.
 	*CASE*			* Topaz in Beta:	
 		EXPOSITION		i)	Great work! Huzzah!
 
-<!-- New stones, craft third Rune -->
-EXPOSITION		- Here are some new Stones and a new Runic Key! 
+<!-- EMERALD APPEARS New stone, craft third Rune -->
+EXPOSITION		- Here is a new Stone and a new Runic Key! 
 
 <!-- Craft a Rune without Ruby or Topaz -->
-INSTRUCTION		- This Runic Key has no Stone. Drag it to the inspector to learn more.
-EXPOSITION		- You must craft a Rune engraved with (any stone except Ruby, or Topaz).
+INSTRUCTION		- Drag it to the inspector to learn more.
+##Inspector 	- *Runic Key* is embedded with Emerald
+EXPOSITION		- You must craft a Rune engraved with Emerald.
 INSTRUCTION		- You will need a new Sigil. Select the Sigil forger.
 	*CASE*			* Sigil has nothing but Ruby or Topaz: 
 		EXPOSITION		i)	This Sigil is forged only with Ruby and/or Topaz! It is impossible to craft the Runic Key with this!
@@ -113,6 +114,7 @@ INSTRUCTION		- Select the Rune Crafter.
 	*CASE*			* Ruby or Topaz:	This is not the Runic Key. Craft the Runic Key!
 	*CASE*			* Correct:	Great! You have crafted the Runic Key!
 
+<!-- SAPHIRE AND AMETHYST APPEAR -->
 <!--  Craft fourth Rune -->
 INSTRUCTION		- This Runic Key also has no Stone. Inspect it!
 ##Inspector		- *Runic Key* is embedded with neither Ruby, Topaz, nor Emerald.
@@ -153,7 +155,7 @@ INSTRUCTION		- Drag the Fused Sigil into the Inspector.
 		*CASE*			* Success: Success 
 <!-- end of popup -->
 
-EXPOSITION		- Now craft a Rune that corresponds with the Runic Key
+EXPOSITION		- Now craft the Runic Key
 INSTRUCTION		- Drag the Rune Crafter into the Workspace.
 	<!-- delay/mistakes -->
 	*CASE*		
@@ -185,20 +187,29 @@ INSTRUCTION		- Drag *Fused Sigil* into the workspace
 	 		INSTRUCTION		- You need a Rune that is engraved with *correct Sigil* and embedded with *correct Stone*
 	 	*CASE*		* Success: 
 	 		EXPOSITION		- Great! This Rune is engraved with *correct Sigil* and embedded with *correct Stone*
-	 		INSTRUCTION		- Finish crafting the Rune
+	 		INSTRUCTION		- Finish crafting the Runic Key
 <!-- end popup -->
+	<!-- Final Rune Crafting ERRORS -->
 
-<!-- Introduce new Runic Key -->
-##
-<!-- Inspect Components -->
-<!-- Inspect Fused Sigil -->
-<!-- Introduce Inspector limitations on Sigil content after teaching Union -->
-<!-- Craft Runes with Fused Sigils -->
+<!-- Introduce FINAL Runic Key -->
+INSTRUCTION		- This Runic Key is trickier. Inspect it!
+##INSPECTOR 	- *Runic Key* engraved with Fused Sigil(Components: Fused Sigil & Fused Sigil) and embedded with Any Stone
+EXPOSITION		- The COMPONENT MAP shows the components of your inspected item.
+INSTRUCTION		- Hover over the components of the engraved Sigil to learn which ones you already have, and which you need to make.
+INSTRUCTION		- You must fuse a Sigil from two fused Sigils to craft this Runic Key.
+	<!-- Errors for not making Sigil -->
+	<!-- Errors for making wrong Sigil -->
+	<!-- Successfully made Fused Sigil with with Fused Components -->
+	*CASE*			* Success: 
+	 		EXPOSITION		- Great! This Sigil is Fused with *correct Component Sigil* and *correct Component Sigil*
+	 		INSTRUCTION		- Craft the Runic Key
+	 <!-- Don't craft justifying Rune Error -->
+	 <!-- Craft wrong rune (not justification of Key) error -->
+	 <!-- Could Craft Key, craft something else -->
+	 <!-- Wrong Justifications -->
+	 <!-- Wrong Stone -->
+	 <!-- Made Runic Key END OF TUTORIAL -->
 
-<!-- You cannot select a justifying Rune until you have engraved the Sigil -->
-
-<!-- Craft specific Runic key with specific Fused Sigil -->
 
 
-<!-- Introduce if x in AUB, x not in B, then x in A -->
 

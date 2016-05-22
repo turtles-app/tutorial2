@@ -1,26 +1,23 @@
-21 May 2016
-Continue Storyboard with next/specific fused Rune.
+FRONT END OUTLINE
+29/05/16
+	-	Outer zones: Book, Inspector, Tools outlined	
+	-	Book Spaces: Stonespace, SigilSpace, WorkSpace, Rune Tree outlined
 
+REQUIRED IMAGES
+	- Simple Sigil
+	- Fused Sigil (could be composed of multiple images)
+	- Resonance Rune
+	- Sigil Forge
+	- Rune Crafter
+	- Fuser		
 
+REQUIRED COMPONETS
+	- Tool Box
+	- Workspace
+	- Stone, Sigil Spaces
 
+FURTHER ON:
 
+	- Rune Tree
+	- Inspector
 
-Step 1:
-	-	Create rune1
-		-	Create Rune Crafter
-			-	Image
-			-	Controller
-		-	Create drag and and drop:
-			-	Dragable directive
-			-	Droppable directive
-			-	Controller methods for dragging STONE & SIGIL
-			-	Controller methods for dropping into RUNE CRAFTER
-	-	Drag rune1 to drop zone
-	-	Explain parts
-		-	Stone1
-		-	Sigil1
-
-Step 2:
-	-	Create Rune2
-		-	Present Stone2
-		-	Introduce active zone
