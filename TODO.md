@@ -4,6 +4,7 @@ FRONT END OUTLINE
 	-	Book Spaces: Stonespace, SigilSpace, WorkSpace, Rune Tree outlined
 
 REQUIRED IMAGES
+	- Amethyst Stone
 	- Simple Sigil
 	- Fused Sigil (could be composed of multiple images)
 	- Resonance Rune
@@ -11,13 +12,12 @@ REQUIRED IMAGES
 	- Rune Crafter
 	- Fuser		
 
-REQUIRED COMPONETS
+REQUIRED COMPONENTS
 	- Tool Box
 	- Workspace
 	- Stone, Sigil Spaces
 
 FURTHER ON:
-
 	- Rune Tree
 	- Inspector
 
