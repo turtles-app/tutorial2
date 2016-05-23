@@ -1,0 +1,91 @@
+
+/*Top Wrap*/
+#topWrap{
+	display:block;
+	height:60%;
+	width:100%;
+/*	border: 3px solid green;*/
+}
+
+/*Book*/
+#bookWrap{
+	position:inherit;
+	border:3px solid black;
+	height: 100%;
+	width:85%;
+}
+
+/*Spaces*/
+#spacesWrap{
+	position:inherit;
+	display:inline;
+	border:2px dotted red;
+	width:49%;
+	height:100%;
+	float:left;
+}
+
+#stonesSpace{
+	border:1px solid blue;
+	position:relative;
+	display:block;
+	width:100%;
+	height:20%;
+	top:5%;
+}
+
+
+#sigilsSpace{
+	position:relative;
+	width:100%;
+	height:40%;
+	border:1px solid blue;
+	top:15%;
+	}
+
+/*Tree*/
+#treeWrap{
+	position:relative;
+	border:2px dotted blue;
+	width:49%;
+	height:100%;
+	float:right;
+}
+
+/*Tools*/
+#toolsWrap{
+	float:right;
+	height:100%;
+	width:10%;
+	border:2px solid black;
+}
+
+/*Bottom Wrap*/
+#bottomWrap{
+	position:relative;
+	/*border: 2px solid red;*/
+	height: 38%;
+	width:80%;
+	left:9%;
+}
+
+/*Inspector*/
+#inspectorWrap{
+	position:relative;
+	float: bottom;
+	/*border:2px solid blue;*/
+	top:3%;
+}
+
+#inspector{
+	position:inherit;
+	height:90%;
+	width:100%;
+	border:2px solid black;
+
+}
+#inspectorTextLine{
+	position:inherit;
+	border:1px solid black;
+	width:100%;
+}
