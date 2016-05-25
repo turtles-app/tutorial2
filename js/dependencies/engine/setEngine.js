@@ -14,6 +14,7 @@ var Set = function (groupName, name, firstEquivalence) {
 		//Add that operation's syntax (array) representation to the set's equivalents
 		this.equivalents.push(firstEquivalence);
 	}
+	this.type = "sigil";
 	this.eqActiveIndex = 0;
 	this.isSet = true;
 

@@ -1,0 +1,9 @@
+.tool {
+	position: relative;
+	width: 88%;
+	display:block;
+	left:6%;
+	top:1%;
+	margin-bottom:10%;
+	/*border: 2px solid purple;*/
+}

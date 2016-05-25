@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="./js/controllers/runeController.js"></script>
 	<script type="text/javascript" src="./js/controllers/stoneController.js"></script>
 	<script type="text/javascript" src="./js/controllers/sigilController.js"></script>
+	<script type="text/javascript" src="./js/controllers/toolController.js"></script>
 	<!--  <script type="text/javascript" src="./js/controllers/scrollController.js"></script> -->
 	<script type="text/javascript" src="./js/controllers/machineController.js"></script>
 
@@ -24,23 +25,34 @@
 	<link rel="stylesheet" type="text/css" href="./styles/angular-toastr.css">
 	<link rel="stylesheet" type="text/css" href="./styles/styles2.css">
 	<link rel="stylesheet" type="text/css" href="./styles/flashing.css">
+	<link rel="stylesheet" type="text/css" href="./styles/stoneSpace.css">
+	<link rel="stylesheet" type="text/css" href="./styles/toolbox.css">
+	<link rel="stylesheet" type="text/css" href="./styles/sigilSpace.css">
 
 </head>
-<body>
-	<div id="topWrap">
-		<div id="toolsWrap"> Tools</div>
-		<div id="bookWrap">
-			<div id="spacesWrap">spaces
-				<div id="stonesSpace">Gems</div>
-				<div id="sigilsSpace">Sigils</div>
+<body ng-app="app">
+	<div ng-controller="dataController as data">
+		<div id="topWrap">
+			<div id="toolsWrap" ng-controller="toolController as toolbox"> 
+				<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png">
+			 </div>
+			<div id="bookWrap">
+				<div id="spacesWrap">
+					<div id="stonesSpace">
+						<img ng-repeat="stone in data.stones" ng-src="./img/{{stone.name}}.png" class="stone" class="tool"></img>
+					</div>
+					<div id="sigilsSpace">
+						<img ng-repeat="sigil in data.sigils" ng-src="./img/{{sigil.type}}.png" class="sigil">
+					</div>
+				</div>
+				<div id="treeWrap">tree</div>
 			</div>
-			<div id="treeWrap">tree</div>
 		</div>
-	</div>
-	<div id="bottomWrap">
-		<div id="inspectorWrap">
-			<div id="inspector">inspector</div>
-			<div id="inspectorTextLine">Text representation of the thing being inspected</div>
-		</div>
-	</div>
+		<div id="bottomWrap">
+			<div id="inspectorWrap">
+				<div id="inspector">inspector</div>
+				<div id="inspectorTextLine">Text representation of the thing being inspected</div>
+			</div>
+		</div> <!-- End bottomWrap -->
+	</div>  <!-- End dataController -->
 </body>

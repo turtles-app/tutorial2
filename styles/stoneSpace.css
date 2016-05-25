@@ -1,0 +1,8 @@
+.stone {
+	position: inherit;
+	height:80%;
+	display: inline-block;
+	top: 10%;
+	margin-left: 7%;
+
+}

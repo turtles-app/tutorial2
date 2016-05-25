@@ -1,16 +1,6 @@
-FRONT END OUTLINE
-29/05/16
-	-	Outer zones: Book, Inspector, Tools outlined	
-	-	Book Spaces: Stonespace, SigilSpace, WorkSpace, Rune Tree outlined
 
 REQUIRED IMAGES
-	- Amethyst Stone
-	- Simple Sigil
-	- Fused Sigil (could be composed of multiple images)
 	- Resonance Rune
-	- Sigil Forge
-	- Rune Crafter
-	- Fuser		
 
 REQUIRED COMPONENTS
 	- Tool Box

@@ -6,28 +6,50 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.stones = [];
 	self.runes = [];
 	self.scroll = [];
+	self.tools = ['forge', 'crafter', 'fuser'];
 
 	//Name Lists
 	self.sigilNames = [	'&alpha;', '&beta;', '&gamma;'];
-	self.sigilColors = ['green', 'blue', 'orange'];
-	self.stoneNames = ["ruby", "sapphire", "emerald"];
-	self.stoneColors = ["red", "blue", "green"];
+	self.sigilTypes = ['sigil', 'fuse', 'trim', 'cleave', 'core'];
+	self.stoneNames = ["ruby", "topaz", "sapphire", "emerald", "amethyst", "quartz"];
 	/////////////
 	//Instances//
 	/////////////
-		//First Triad (sigil, stone, rune)
+		//Initialize sigils
 	self.alpha = new Set("sets", self.sigilNames.shift());
 	self.alpha.groupIndex = 0;
-	self.alpha.color = self.sigilColors[0];
-	self.ruby = new Element(self.stoneNames.shift(), self.alpha);
+	self.alpha.type = self.sigilTypes[0];
+	self.beta = new Set("sets", self.sigilNames.shift());
+	self.beta.groupIndex = 1;
+	self.omega = new Set("sets", "&omega;");
+
+	self.ruby = new Element(self.stoneNames.shift(), self.omega);
 	self.ruby.groupIndex = 0;
-	self.ruby.color = self.stoneColors.shift();
+	self.topaz = new Element(self.stoneNames.shift(), self.omega);
+	self.topaz.groupIndex = 1;
+	self.sapphire = new Element(self.stoneNames.shift(), self.omega);
+	self.sapphire.groupIndex = 2;
+	self.emerald = new Element(self.stoneNames.shift(), self.omega);
+	self.emerald.groupIndex = 3;
+	self.amethyst = new Element(self.stoneNames.shift(), self.omega);
+	self.amethyst.groupIndex = 4;		
+	self.quartz = new Element(self.stoneNames.shift(), self.omega);
+	self.quartz.groupIndex = 5;
 	self.rune1 = new Fact(self.ruby.name, true, self.alpha.equivalents[0]);
+
+	//put stones in sigils
+	self.alpha.putIn(self.ruby);
+	self.beta.putIn(self.amethyst);
+
+	self.gamma = union(self.sigilNames.shift(),self.alpha, self.beta);
 
 	self.runes.push(self.rune1);
 	self.stones.push(self.ruby);
 	self.sigils.push(self.alpha);
-	console.log(self.stones[0]);
+	self.sigils.push(self.gamma);
+
+	//Unused data
+	self.stones.push(self.topaz, self.sapphire, self.emerald, self.amethyst, self.quartz);
 
 	//Flash methods
 		// These make a given object flash on screen
