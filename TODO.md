@@ -1,11 +1,14 @@
 
 REQUIRED IMAGES
 	- Resonance Rune
+	- Background ideas
 
 REQUIRED COMPONENTS
-	- Tool Box
+	- Drag and drop:
+		*	Stones
+		*	Sigils
+		*	Tools
 	- Workspace
-	- Stone, Sigil Spaces
 
 FURTHER ON:
 	- Rune Tree

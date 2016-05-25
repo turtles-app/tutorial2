@@ -6,16 +6,17 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.stones = [];
 	self.runes = [];
 	self.scroll = [];
-	self.tools = ['forge', 'crafter', 'fuser'];
 
 	//Name Lists
 	self.sigilNames = [	'&alpha;', '&beta;', '&gamma;'];
 	self.sigilTypes = ['sigil', 'fuse', 'trim', 'cleave', 'core'];
 	self.stoneNames = ["ruby", "topaz", "sapphire", "emerald", "amethyst", "quartz"];
-	/////////////
-	//Instances//
-	/////////////
-		//Initialize sigils
+	self.tools = ['forge', 'crafter', 'fuser'];
+
+	/* 
+	*****Instances*****
+	*/
+	//Initialize sigils
 	self.alpha = new Set("sets", self.sigilNames.shift());
 	self.alpha.groupIndex = 0;
 	self.alpha.type = self.sigilTypes[0];
@@ -23,6 +24,7 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.beta.groupIndex = 1;
 	self.omega = new Set("sets", "&omega;");
 
+	//Intitialize stones
 	self.ruby = new Element(self.stoneNames.shift(), self.omega);
 	self.ruby.groupIndex = 0;
 	self.topaz = new Element(self.stoneNames.shift(), self.omega);
@@ -35,12 +37,15 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.amethyst.groupIndex = 4;		
 	self.quartz = new Element(self.stoneNames.shift(), self.omega);
 	self.quartz.groupIndex = 5;
+
+	//Initialize Runes
 	self.rune1 = new Fact(self.ruby.name, true, self.alpha.equivalents[0]);
 
-	//put stones in sigils
+	//Put stones in sigils
 	self.alpha.putIn(self.ruby);
 	self.beta.putIn(self.amethyst);
 
+	//Create union
 	self.gamma = union(self.sigilNames.shift(),self.alpha, self.beta);
 
 	self.runes.push(self.rune1);
@@ -51,9 +56,11 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	//Unused data
 	self.stones.push(self.topaz, self.sapphire, self.emerald, self.amethyst, self.quartz);
 
-	//Flash methods
-		// These make a given object flash on screen
-			//Flash stone methods//
+	/* 
+	*****Flash Methods*****
+	***	These make a given object flash on screen
+	*/
+		//Flash stone methods
 	self.flashStones = function (arr) {
 		$rootScope.$broadcast('flashStones', arr);
 	};
@@ -67,7 +74,7 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 		$rootScope.$broadcast('clearFlashStoneArea');
 	};
 
-		//Flash sigil methods//
+		//Flash sigil methods
 	self.flashSigils = function (arr) {
 		$rootScope.$broadcast('flashSigils', arr);
 	};
@@ -81,7 +88,7 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 		$rootScope.$broadcast('clearFlashSigilArea');
 	};
 
-		//Flash rune methods//
+		//Flash rune methods
 	self.flashRunes = function (arr) {
 		$rootScope.$broadcast('flashRunes', arr);
 	};
