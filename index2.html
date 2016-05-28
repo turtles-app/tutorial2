@@ -18,8 +18,11 @@
 	<script type="text/javascript" src="./js/controllers/stoneController.js"></script>
 	<script type="text/javascript" src="./js/controllers/sigilController.js"></script>
 	<script type="text/javascript" src="./js/controllers/toolController.js"></script>
-	<!--  <script type="text/javascript" src="./js/controllers/scrollController.js"></script> -->
-	<script type="text/javascript" src="./js/controllers/machineController.js"></script>
+	<script type="text/javascript" src="./js/controllers/workspaceController.js"></script>
+	
+	<!-- directives -->
+	<script type="text/javascript" src="./js/directives/draggable.js"></script>
+	<script type="text/javascript" src="./js/directives/droppable.js"></script>
 
 	<!-- styles -->
 	<link rel="stylesheet" type="text/css" href="./styles/angular-toastr.css">
@@ -28,24 +31,43 @@
 	<link rel="stylesheet" type="text/css" href="./styles/stoneSpace.css">
 	<link rel="stylesheet" type="text/css" href="./styles/toolbox.css">
 	<link rel="stylesheet" type="text/css" href="./styles/sigilSpace.css">
+	<link rel="stylesheet" type="text/css" href="./styles/inspector.css">
+	<link rel="stylesheet" type="text/css" href="./styles/workspace.css">
 
 </head>
 <body ng-app="app">
 	<div ng-controller="dataController as data">
 		<div id="topWrap">
 			<div id="toolsWrap" ng-controller="toolController as toolbox"> 
-				<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png">
+				<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png" custom-draggable type="'tool'" index="$index">
 			 </div>
 			<div id="bookWrap">
 				<div id="spacesWrap">
 					<div id="stonesSpace">
-						<img ng-repeat="stone in data.stones" ng-src="./img/{{stone.name}}.png" class="stone" class="tool"></img>
+						<img ng-repeat="stone in data.stones" ng-src="./img/{{stone.name}}.png" class="stone" class="tool" custom-draggable index="$index" type="'stone'"></img>
 					</div>
 					<div id="sigilsSpace">
-						<img ng-repeat="sigil in data.sigils" ng-src="./img/{{sigil.type}}.png" class="sigil">
+						<img ng-repeat="sigil in data.sigils" ng-src="./img/{{sigil.type}}.png" class="sigil"custom-draggable index="$index" type="'sigil'">
 					</div>
 				</div>
-				<div id="treeWrap">tree</div>
+			<div id="workspace" ng-controller="workspaceController as workspace" >
+				<div id="workspaceDropZoneWrap">
+					<div custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop"  id="workspaceActiveToolWrap" >
+						<img id="workspaceActiveToolImg" ng-src="./img/{{workspace.tool}}.png" ng-if="workspace.tool != ''">
+					</div>
+					<div ng-if="workspace.tool ==='forge'">
+						<div id="forgeDropZone"  custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop"> 
+							<img src="./img/sigil.png">
+						</div>
+					</div>
+					<div ng-if="workspace.tool ==='fuser'">Fuser is visible</div>
+					<div ng-if="workspace.tool ==='crafter'">Crafter is visible</div>
+				</div>
+				<div ng-if="workspace.tool ==='forge'" id="forgeStones">
+					<img class="forgeStones" ng-repeat="stone in workspace.stones" ng-src="./img/{{stone.name}}.png"></img>
+				</div>
+			</div>
+			<div id="treeWrap">tree</div>
 			</div>
 		</div>
 		<div id="bottomWrap">

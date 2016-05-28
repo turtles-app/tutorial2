@@ -1,0 +1,47 @@
+#forgeDropZone{
+	position:relative;
+	/*display: inline-block;*/
+	height:70%;
+	width:40%;
+	left:15%;
+
+	/*border:2px solid green;	*/
+}
+
+#forgeDropZone img{
+	position:relative;
+	height:100%;
+	top: 15%;
+
+}
+#workspaceActiveToolWrap{
+	display:inline;
+	float:top;
+	position: relative;
+	width:20%;
+	height:20%;
+	float:right;
+	border:2px dashed blue;
+	/*right:2%;*/
+}
+
+#workspaceActiveToolImg{
+	width:100%;
+	height:100%;
+}
+
+
+/*When Forge is dropped in*/
+
+.forgeStones{
+	display:inline-block;
+	position:inherit;
+	height:100%;
+	margin-left:4%;
+}
+
+#forgeStones{
+	position:relative;
+	height:15%;
+	bottom:-1px;
+}

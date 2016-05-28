@@ -3,6 +3,7 @@ REQUIRED IMAGES
 	- Resonance Rune
 	- Background ideas
 
+
 REQUIRED COMPONENTS
 	- Drag and drop:
 		*	Stones
@@ -11,6 +12,6 @@ REQUIRED COMPONENTS
 	- Workspace
 
 FURTHER ON:
-	- Rune Tree
 	- Inspector
-
+		*	Multiple nodes of same set case
+	- Rune Tree

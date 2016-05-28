@@ -13,6 +13,7 @@
 	border:3px solid black;
 	height: 100%;
 	width:85%;
+	margin-left:5%;
 }
 
 /*Spaces*/
@@ -20,7 +21,7 @@
 	position:inherit;
 	display:inline;
 	border:2px dotted red;
-	width:49%;
+	width:30%;
 	height:100%;
 	float:left;
 }
@@ -44,21 +45,34 @@
 	/*border:1px solid blue;*/
 	top:15%;
 	}
+/*Workspace*/
+#workspace{
+	position:relative;
+	float:left;
+	height:100%;
+	width:41%;
+	border:2px solid green;
+}
+#workspaceDropZoneWrap{
+	height:83.5%;
+}
+
 
 /*Tree*/
 #treeWrap{
 	position:relative;
+	display:inline-block;
 	border:2px dotted blue;
-	width:49%;
+	width:28%;
 	height:100%;
-	float:right;
+	float:left;
 }
 
 /*Tools*/
 #toolsWrap{
 	float:right;
 	height:100%;
-	width:10%;
+	width:6%;
 	border:2px solid black;
 }
 
@@ -67,27 +81,17 @@
 	position:relative;
 	/*border: 2px solid red;*/
 	height: 38%;
-	width:80%;
-	left:9%;
+	width:100%;
+	
 }
 
 /*Inspector*/
 #inspectorWrap{
 	position:relative;
-	float: bottom;
-	/*border:2px solid blue;*/
-	top:3%;
+	float:right;
+	border:2px solid blue;
+	width:98%;
+	/*left:2%;*/
+	height:100%;
 }
 
-#inspector{
-	position:inherit;
-	height:90%;
-	width:100%;
-	border:2px solid black;
-
-}
-#inspectorTextLine{
-	position:inherit;
-	border:1px solid black;
-	width:100%;
-}

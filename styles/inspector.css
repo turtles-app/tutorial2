@@ -1,0 +1,14 @@
+#inspector{
+	position:inherit;
+	height:90%;
+	width:100%;
+	/*border:2px solid black;*/
+
+}
+#inspectorTextLine{
+	position:inherit;
+	border:1px solid black;
+	width:100%;
+	border:2px solid black;
+	float:bottom;
+}
