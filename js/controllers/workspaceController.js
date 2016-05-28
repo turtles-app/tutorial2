@@ -1,11 +1,17 @@
 app.controller("workspaceController",["$scope",function($scope){
 	var self = this;
 	var data = $scope.data;
+	/*
+	***Instance Variables
+	*/
 	self.tool = [];
 	self.stones = [];
 	self.sigils = [];
 	self.runes = [];
 
+	/*
+	***Drop functionality
+	*	Check whether dragged item may be dropped	*/
 	self.dropAllowed = function(){
 		switch (dragData.type){
 			case "tool":
@@ -26,10 +32,10 @@ app.controller("workspaceController",["$scope",function($scope){
 			return false;
 	};
 
+	// Handle drop into workspace
 	self.drop = function(){
 		switch (dragData.type){
 			case "tool":
-
 				if (self.tool!=""){
 					data.tools.push(self.tool);
 				} 

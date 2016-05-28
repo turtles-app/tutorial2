@@ -5,11 +5,14 @@ REQUIRED IMAGES
 
 
 REQUIRED COMPONENTS
-	- Drag and drop:
-		*	Stones
-		*	Sigils
-		*	Tools
-	- Workspace
+	- Workspace INPUTS
+		- Fuser INPUTS
+		- Crafter INPUTS
+	- Workspace OUTPUTS
+		- Forge OUTPUTS
+		- Fuser OUTPUTS
+		- CRAFTER OUTPUTS
+
 
 FURTHER ON:
 	- Inspector
