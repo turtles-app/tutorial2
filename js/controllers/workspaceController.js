@@ -6,7 +6,8 @@ app.controller("workspaceController",["$scope",function($scope){
 	*/
 	self.tool = [];
 	self.stones = [];
-	self.sigils = [];
+	self.leftSigil = null;
+	self.rightSigil = null;
 	self.runes = [];
 
 	/*
@@ -50,10 +51,9 @@ app.controller("workspaceController",["$scope",function($scope){
 					data.runes = data.runes.concat(self.runes);
 					self.runes = [];
 				}
-				if (self.sigils.length>0){
-					data.sigils = data.sigils.concat(self.sigils);
-					self.sigils = [];
-				}
+				//Clear the active sigils in the workspace
+					self.leftSigil = null;
+					self.rightSigil = null;
 				break;
 
 
@@ -70,6 +70,23 @@ app.controller("workspaceController",["$scope",function($scope){
 				console.log("rune has been dropped");
 				break;
 		}
+		$scope.$apply();
+	};
+
+	//Check item being dragged is a sigil
+	self.isSigil = function(){
+		console.log("isSigil function fired");
+		if(dragData.type==="sigil") return true;
+		else return false;
+	};
+
+	//Drop sigils into left and right slots
+	self.dropLeftSigil = function(){
+		self.leftSigil = data.sigils[dragData.index];
+		$scope.$apply();
+	};
+	self.dropRightSigil = function(){
+		self.rightSigil = data.sigils[dragData.index];
 		$scope.$apply();
 	};
 }]);

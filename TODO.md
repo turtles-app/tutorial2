@@ -6,7 +6,6 @@ REQUIRED IMAGES
 
 REQUIRED COMPONENTS
 	- Workspace INPUTS
-		- Fuser INPUTS
 		- Crafter INPUTS
 	- Workspace OUTPUTS
 		- Forge OUTPUTS
@@ -15,6 +14,8 @@ REQUIRED COMPONENTS
 
 
 FURTHER ON:
+	- Trash Can
 	- Inspector
 		*	Multiple nodes of same set case
 	- Rune Tree
+	- POJO of equivalents

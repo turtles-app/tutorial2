@@ -45,3 +45,50 @@
 	height:15%;
 	bottom:-1px;
 }
+
+/* FUSER DROP */
+
+#fuserDropZoneContainer {
+	position: absolute;
+	background-image: url("../img/fuse.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	left: 10%;
+	top: 25%;
+	width: 80%;
+	height: 65%;
+	/*border: 2px solid red;*/
+}
+
+#rightFuserDrop {
+	position: absolute;
+	width: 33%;
+	height: 100%;
+	left: 67%;
+	/*border: 2px solid blue;*/
+}
+
+#leftFuserDrop {
+	position: absolute;
+	width: 33%;
+	height: 100%;
+	/*border: 2px solid blue;*/
+}
+
+#rightFuserSigil {
+	position: absolute;
+	width: 20%;
+	height: 15%;
+	left: 67%;
+	top:45%;
+	/*border: 2px solid green;*/
+}
+
+#leftFuserSigil {
+	position: absolute;
+	width: 20%;
+	height: 15%;
+	top:45%;
+	left:13%;
+	/*border: 2px solid green;*/
+}

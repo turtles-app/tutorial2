@@ -55,12 +55,21 @@
 					<div custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop"  id="workspaceActiveToolWrap" >
 						<img id="workspaceActiveToolImg" ng-src="./img/{{workspace.tool}}.png" ng-if="workspace.tool != ''">
 					</div>
+					<!-- Forge workspace -->
 					<div ng-if="workspace.tool ==='forge'">
 						<div id="forgeDropZone"  custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop"> 
 							<img src="./img/sigil.png">
 						</div>
 					</div>
-					<div ng-if="workspace.tool ==='fuser'">Fuser is visible</div>
+					<!-- Fuser workspace -->
+					<div ng-if="workspace.tool ==='fuser'">
+						<div id="fuserDropZoneContainer">
+							<div id="leftFuserDrop" custom-droppable drop-allowed="workspace.isSigil" on-drop="workspace.dropLeftSigil" ng-if="!workspace.leftSigil"></div>
+							<div id="leftFuserSigil" ng-if="workspace.leftSigil">{{workspace.leftSigil.equivalents[0]}}</div>
+							<div id="rightFuserDrop" custom-droppable drop-allowed="workspace.isSigil" on-drop="workspace.dropRightSigil" ng-if="!workspace.rightSigil"></div>
+							<div id="rightFuserSigil" ng-if="workspace.rightSigil">{{workspace.rightSigil.equivalents[0]}}</div>
+						</div>
+					</div>
 					<div ng-if="workspace.tool ==='crafter'">Crafter is visible</div>
 				</div>
 				<div ng-if="workspace.tool ==='forge'" id="forgeStones">
