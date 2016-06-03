@@ -1,5 +1,6 @@
 
 REQUIRED IMAGES
+	- Crafter frame
 	- Resonance Rune
 	- Background ideas
 
@@ -9,12 +10,10 @@ REQUIRED COMPONENTS
 		- Crafter INPUTS
 	- Workspace OUTPUTS
 		- Forge OUTPUTS
-		- Fuser OUTPUTS
 		- CRAFTER OUTPUTS
 
 
 FURTHER ON:
-	- Trash Can
 	- Inspector
 		*	Multiple nodes of same set case
 	- Rune Tree

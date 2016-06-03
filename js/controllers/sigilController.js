@@ -4,6 +4,36 @@ app.controller("sigilController", ["$scope", "$rootScope", function($scope, $roo
 	self.flashingSigils = []; //List of sigils that are flashing
 	self.flashing = false; //Determines whether sigil area is flashing
 
+
+
+
+	/*
+	*** Drop Cycle Handlers
+	*/
+	self.dropAllowed = function () {
+		switch (dragData.type) {
+			case "forgeSigil":
+			case "fusedSigil":
+				return true;
+				break;
+		}
+	};
+
+	self.drop = function () {
+		var left = data.leftSigil;
+		var right = data.rightSigil;
+		switch (dragData.type) {
+			case "fusedSigil":
+				var res = union(data.sigilNames.shift(), left, right);
+				res.groupIndex = data.sigils.length;
+				data.sigils.push(res);
+				$rootScope.$broadcast('trashDrop', {type : dragData.type}); //broadcast to workspace
+				break;
+		}
+		$scope.$apply();
+	}
+
+
 	//////////////////////////////
 	// Flashing Event Listeners //
 	//////////////////////////////

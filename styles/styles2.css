@@ -1,10 +1,10 @@
 
 /*Top Wrap*/
 #topWrap{
-	display:block;
+	display:inline-block;
 	height:60%;
-	width:100%;
-/*	border: 3px solid green;*/
+	width:93.5%;
+	/*border: 3px solid green;*/
 }
 
 /*Book*/
@@ -68,20 +68,13 @@
 	float:left;
 }
 
-/*Tools*/
-#toolsWrap{
-	float:right;
-	height:100%;
-	width:6%;
-	border:2px solid black;
-}
-
 /*Bottom Wrap*/
 #bottomWrap{
 	position:relative;
+	display:inline-block;
 	/*border: 2px solid red;*/
 	height: 38%;
-	width:100%;
+	width:93.5%;
 	
 }
 
@@ -95,3 +88,13 @@
 	height:100%;
 }
 
+
+/*Tools*/
+#toolsWrap{
+	position:relative;
+	float:right;
+	height:100%;
+	width:6%;
+	border:2px solid black;
+	display:inline-block;
+}

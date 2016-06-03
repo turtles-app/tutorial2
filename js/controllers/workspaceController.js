@@ -1,13 +1,11 @@
-app.controller("workspaceController",["$scope",function($scope){
+app.controller("workspaceController",["$rootScope", "$scope",function($rootScope, $scope){
 	var self = this;
 	var data = $scope.data;
 	/*
 	***Instance Variables
 	*/
-	self.tool = [];
+	self.tool = null;
 	self.stones = [];
-	self.leftSigil = null;
-	self.rightSigil = null;
 	self.runes = [];
 
 	/*
@@ -37,11 +35,10 @@ app.controller("workspaceController",["$scope",function($scope){
 	self.drop = function(){
 		switch (dragData.type){
 			case "tool":
-				if (self.tool!=""){
+				if (self.tool!=null){
 					data.tools.push(self.tool);
 				} 
 				self.tool = data.tools.splice(dragData.index, 1)[0];
-				console.log(self.stones);
 
 				if (self.stones.length>0){
 					data.stones = data.stones.concat(self.stones);
@@ -52,22 +49,19 @@ app.controller("workspaceController",["$scope",function($scope){
 					self.runes = [];
 				}
 				//Clear the active sigils in the workspace
-					self.leftSigil = null;
-					self.rightSigil = null;
+					data.leftSigil = null;
+					data.rightSigil = null;
 				break;
 
 
 			case "stone":
 				self.stones.push(data.stones.splice(dragData.index, 1)[0]);
-				console.log("stone has been dropped");
 				break;
 			case "sigil":
 				self.sigils.push(data.sigils.splice(dragData.index, 1)[0]);
-				console.log("sigil has been dropped");
 				break;
 			case "rune":
 				self.runes.push(data.runes.splice(dragData.index, 1)[0]);
-				console.log("rune has been dropped");
 				break;
 		}
 		$scope.$apply();
@@ -75,18 +69,36 @@ app.controller("workspaceController",["$scope",function($scope){
 
 	//Check item being dragged is a sigil
 	self.isSigil = function(){
-		console.log("isSigil function fired");
 		if(dragData.type==="sigil") return true;
 		else return false;
 	};
 
 	//Drop sigils into left and right slots
 	self.dropLeftSigil = function(){
-		self.leftSigil = data.sigils[dragData.index];
+		data.leftSigil = data.sigils[dragData.index];
 		$scope.$apply();
 	};
 	self.dropRightSigil = function(){
-		self.rightSigil = data.sigils[dragData.index];
+		data.rightSigil = data.sigils[dragData.index];
 		$scope.$apply();
 	};
+
+	$rootScope.$on('trashDrop', function(ev, data){
+		switch(data.type){
+			case "fusedSigil":
+				// data.leftSigil = null;
+				// data.rightSigil = null;
+				$rootScope.$broadcast("clearWorkspace");
+				break;
+			case "selectedTool":
+				$rootScope.$broadcast('trashTool', {tool: self.tool}); // broadcast to the data controller
+				self.tool = null;
+				self.runes = [];
+				break;
+			case "forgeSigil":
+				self.stones = [];
+				break;
+		}
+		$scope.$apply();
+	});
 }]);

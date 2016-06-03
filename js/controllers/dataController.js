@@ -6,9 +6,11 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.stones = [];
 	self.runes = [];
 	self.scroll = [];
+	self.leftSigil = null;
+	self.rightSigil = null;
 
 	//Name Lists
-	self.sigilNames = [	'&alpha;', '&beta;', '&gamma;'];
+	self.sigilNames = [	'&alpha;', '&beta;', '&gamma;', '&delta;', '&epsilon;', '&zeta;', '&eta;', '&theta;', '&lota;', '&kappa;', '&lambda;', '&mu;', '&nu;', '&xi;', '&omicron;', '&pi;', '&rho;', '&sigma;', '&tau;', '&upsilon;', '&phi;', '&chi;', '&psi', '&psi;', '&omega;'];
 	self.sigilTypes = ['sigil', 'fuse', 'trim', 'cleave', 'core'];
 	self.stoneNames = ["ruby", "topaz", "sapphire", "emerald", "amethyst", "quartz"];
 	self.tools = ['forge', 'crafter', 'fuser'];
@@ -101,4 +103,15 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.clearFlashRuneArea = function () {
 		$rootScope.$broadcast('clearFlashRuneArea');
 	};
+
+//recieve broadcast from the workspace controller upon trashing selected tool
+	$rootScope.$on('trashTool', function (ev, data){ 
+		self.tools.push(data.tool);
+	});
+
+	$rootScope.$on("clearWorkspace", function (ev, data) {
+		console.log("clearing workspace");
+		self.leftSigil = null;
+		self.rightSigil = null;
+	});
 }]);

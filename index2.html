@@ -38,37 +38,37 @@
 <body ng-app="app">
 	<div ng-controller="dataController as data">
 		<div id="topWrap">
-			<div id="toolsWrap" ng-controller="toolController as toolbox"> 
-				<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png" custom-draggable type="'tool'" index="$index">
-			 </div>
 			<div id="bookWrap">
 				<div id="spacesWrap">
 					<div id="stonesSpace">
 						<img ng-repeat="stone in data.stones" ng-src="./img/{{stone.name}}.png" class="stone" class="tool" custom-draggable index="$index" type="'stone'"></img>
 					</div>
-					<div id="sigilsSpace">
-						<img ng-repeat="sigil in data.sigils" ng-src="./img/{{sigil.type}}.png" class="sigil"custom-draggable index="$index" type="'sigil'">
+					<div id="sigilsSpace" ng-controller="sigilController as sigil">
+						<div id="sigilDropZone" custom-droppable drop-allowed="sigil.dropAllowed" on-drop="sigil.drop">
+							<img ng-repeat="sigil in data.sigils" ng-src="./img/{{sigil.type}}.png" class="sigil"custom-draggable index="$index" type="'sigil'">
+						</div>
 					</div>
 				</div>
 			<div id="workspace" ng-controller="workspaceController as workspace" >
 				<div id="workspaceDropZoneWrap">
 					<div custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop"  id="workspaceActiveToolWrap" >
-						<img id="workspaceActiveToolImg" ng-src="./img/{{workspace.tool}}.png" ng-if="workspace.tool != ''">
+						<img custom-draggable index="null" type="'selectedTool'" id="workspaceActiveToolImg" ng-src="./img/{{workspace.tool}}.png" ng-if="workspace.tool != null">
 					</div>
 					<!-- Forge workspace -->
 					<div ng-if="workspace.tool ==='forge'">
-						<div id="forgeDropZone"  custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop"> 
-							<img src="./img/sigil.png">
+						<div id="forgeDropZone"  custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop" > 
+							<img src="./img/sigil.png" custom-draggable type="'forgeSigil'" index="null">
 						</div>
 					</div>
 					<!-- Fuser workspace -->
 					<div ng-if="workspace.tool ==='fuser'">
-						<div id="fuserDropZoneContainer">
-							<div id="leftFuserDrop" custom-droppable drop-allowed="workspace.isSigil" on-drop="workspace.dropLeftSigil" ng-if="!workspace.leftSigil"></div>
-							<div id="leftFuserSigil" ng-if="workspace.leftSigil">{{workspace.leftSigil.equivalents[0]}}</div>
-							<div id="rightFuserDrop" custom-droppable drop-allowed="workspace.isSigil" on-drop="workspace.dropRightSigil" ng-if="!workspace.rightSigil"></div>
-							<div id="rightFuserSigil" ng-if="workspace.rightSigil">{{workspace.rightSigil.equivalents[0]}}</div>
+						<div class="fuserDropZoneContainer" custom-draggable index="null" type="'fusedSigil'" >
+							<div id="leftFuserDrop" custom-droppable drop-allowed="workspace.isSigil" on-drop="workspace.dropLeftSigil" ng-if="!data.leftSigil"></div>
+							<div id="rightFuserDrop" custom-droppable drop-allowed="workspace.isSigil" on-drop="workspace.dropRightSigil" ng-if="!data.rightSigil"></div>
 						</div>
+						<img ng-if="data.leftSigil!=null && data.rightSigil!=null" src="./img/fuse.png" class="fuserDropZoneContainer" custom-draggable index="null" type="'fusedSigil'" id="fuserDropImg">
+							<span id="leftFuserSigil" ng-if="data.leftSigil" ng-bind-html="data.leftSigil.equivalents[data.leftSigil.eqActiveIndex] | html"></span>
+							<span id="rightFuserSigil" ng-if="data.rightSigil" ng-bind-html="data.rightSigil.equivalents[data.rightSigil.eqActiveIndex] | html"></span>
 					</div>
 					<div ng-if="workspace.tool ==='crafter'">Crafter is visible</div>
 				</div>
@@ -78,6 +78,10 @@
 			</div>
 			<div id="treeWrap">tree</div>
 			</div>
+		</div>
+		<div id="toolsWrap" ng-controller="toolController as toolbox"> 
+			<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png"custom-draggable type="'tool'" index="$index">
+			<img ng-src="./img/trash.png" class="tool" id="trashCan" custom-droppable drop-allowed="toolbox.trashAllowed" on-drop="toolbox.trashDrop"></img>
 		</div>
 		<div id="bottomWrap">
 			<div id="inspectorWrap">

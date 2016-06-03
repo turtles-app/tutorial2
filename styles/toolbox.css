@@ -1,9 +1,15 @@
 .tool {
 	position: relative;
-	width: 65%;
+	width: 90%;
 	display:block;
 	left:6%;
 	top:1%;
 	margin-bottom:10%;
 	/*border: 2px solid purple;*/
+}
+
+#trashCan{
+	position:absolute;
+	top:80%;
+	/*border:2px solid green;*/
 }
