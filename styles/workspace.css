@@ -1,6 +1,6 @@
 #forgeDropZone{
 	position:relative;
-	/*display: inline-block;*/
+	display: inline-block;
 	height:70%;
 	width:40%;
 	left:15%;

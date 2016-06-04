@@ -45,7 +45,10 @@
 					</div>
 					<div id="sigilsSpace" ng-controller="sigilController as sigil">
 						<div id="sigilDropZone" custom-droppable drop-allowed="sigil.dropAllowed" on-drop="sigil.drop">
-							<img ng-repeat="sigil in data.sigils" ng-src="./img/{{sigil.type}}.png" class="sigil"custom-draggable index="$index" type="'sigil'">
+							<div ng-repeat="sigil in data.sigils" class="sigilWrap">
+								<p ng-bind-html="sigil.strEquivalents[sigil.eqActiveIndex] | html" class="sigilStr"></p>
+								<img  ng-src="./img/{{sigil.type}}.png" class="sigil"custom-draggable index="$index" type="'sigil'">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -73,7 +76,7 @@
 					<div ng-if="workspace.tool ==='crafter'">Crafter is visible</div>
 				</div>
 				<div ng-if="workspace.tool ==='forge'" id="forgeStones">
-					<img class="forgeStones" ng-repeat="stone in workspace.stones" ng-src="./img/{{stone.name}}.png"></img>
+					<img class="forgeStones" ng-repeat="stone in data.selectedStones" ng-src="./img/{{stone.name}}.png">
 				</div>
 			</div>
 			<div id="treeWrap">tree</div>
@@ -81,7 +84,7 @@
 		</div>
 		<div id="toolsWrap" ng-controller="toolController as toolbox"> 
 			<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png"custom-draggable type="'tool'" index="$index">
-			<img ng-src="./img/trash.png" class="tool" id="trashCan" custom-droppable drop-allowed="toolbox.trashAllowed" on-drop="toolbox.trashDrop"></img>
+			<img ng-src="./img/trash.png" class="tool" id="trashCan" custom-droppable drop-allowed="toolbox.trashAllowed" on-drop="toolbox.trashDrop">
 		</div>
 		<div id="bottomWrap">
 			<div id="inspectorWrap">

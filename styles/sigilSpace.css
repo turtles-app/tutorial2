@@ -1,9 +1,21 @@
 .sigil {
 	position: relative;
 	display: inline-block;
-	width: 20%;
-	top: 4.3%;
+	width: 100%;
+	/*top: 4.3%;*/
 	margin-left: 3%;
+}
+
+.sigilWrap {
+	position: relative;
+	display: inline-block;
+	width: 20%;
+}
+
+.sigilStr {
+	position: absolute;
+	top: 4%;
+	left: 48%;
 }
 
 #sigilDropZone {

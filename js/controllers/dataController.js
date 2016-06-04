@@ -8,6 +8,7 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.scroll = [];
 	self.leftSigil = null;
 	self.rightSigil = null;
+	self.selectedStones = [];
 
 	//Name Lists
 	self.sigilNames = [	'&alpha;', '&beta;', '&gamma;', '&delta;', '&epsilon;', '&zeta;', '&eta;', '&theta;', '&lota;', '&kappa;', '&lambda;', '&mu;', '&nu;', '&xi;', '&omicron;', '&pi;', '&rho;', '&sigma;', '&tau;', '&upsilon;', '&phi;', '&chi;', '&psi', '&psi;', '&omega;'];
@@ -107,11 +108,16 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 //recieve broadcast from the workspace controller upon trashing selected tool
 	$rootScope.$on('trashTool', function (ev, data){ 
 		self.tools.push(data.tool);
+		self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
+		self.stones.sort(sortGroup);		
 	});
 
+	// clear workspace after trashing, or creating new sigil
 	$rootScope.$on("clearWorkspace", function (ev, data) {
 		console.log("clearing workspace");
 		self.leftSigil = null;
 		self.rightSigil = null;
+		self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
+		self.stones.sort(sortGroup);
 	});
 }]);

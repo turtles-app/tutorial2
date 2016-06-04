@@ -132,3 +132,7 @@ var Fact = function (elementName, isIn, setSyntax) {
 	this.str = elementName + tmpStr + stringifySyntax(setSyntax);;
 	this.groupIndex;
 };
+
+var sortGroup = function (a, b) {
+	return a.groupIndex - b.groupIndex;
+}

@@ -23,13 +23,23 @@ app.controller("sigilController", ["$scope", "$rootScope", function($scope, $roo
 		var left = data.leftSigil;
 		var right = data.rightSigil;
 		switch (dragData.type) {
+			case "forgeSigil":
+				var res = new Set("sets", data.sigilNames.shift());
+				res.groupIndex = data.sigils.length;
+				data.selectedStones.forEach(function (stone) {
+					res.putIn(stone);
+				});
+				data.sigils.push(res);
+				data.stones = data.stones.concat(data.selectedStones.splice(0, data.selectedStones.length));
+				data.stones.sort(sortGroup);
+				break;
 			case "fusedSigil":
 				var res = union(data.sigilNames.shift(), left, right);
 				res.groupIndex = data.sigils.length;
 				data.sigils.push(res);
-				$rootScope.$broadcast('trashDrop', {type : dragData.type}); //broadcast to workspace
 				break;
 		}
+		$rootScope.$broadcast('trashDrop', {type : dragData.type}); //broadcast to workspace
 		$scope.$apply();
 	}
 

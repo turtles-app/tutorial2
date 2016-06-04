@@ -5,7 +5,7 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 	***Instance Variables
 	*/
 	self.tool = null;
-	self.stones = [];
+	// self.stones = [];
 	self.runes = [];
 
 	/*
@@ -40,9 +40,9 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 				} 
 				self.tool = data.tools.splice(dragData.index, 1)[0];
 
-				if (self.stones.length>0){
-					data.stones = data.stones.concat(self.stones);
-					self.stones = [];
+				if (data.selectedStones.length>0){
+					data.stones = data.stones.concat(data.selectedStones);
+					data.selectedStones = [];
 				}
 				if (self.runes.length>0){
 					data.runes = data.runes.concat(self.runes);
@@ -55,7 +55,7 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 
 
 			case "stone":
-				self.stones.push(data.stones.splice(dragData.index, 1)[0]);
+				data.selectedStones.push(data.stones.splice(dragData.index, 1)[0]);
 				break;
 			case "sigil":
 				self.sigils.push(data.sigils.splice(dragData.index, 1)[0]);
@@ -86,17 +86,13 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 	$rootScope.$on('trashDrop', function(ev, data){
 		switch(data.type){
 			case "fusedSigil":
-				// data.leftSigil = null;
-				// data.rightSigil = null;
+			case "forgeSigil":
 				$rootScope.$broadcast("clearWorkspace");
 				break;
 			case "selectedTool":
 				$rootScope.$broadcast('trashTool', {tool: self.tool}); // broadcast to the data controller
 				self.tool = null;
 				self.runes = [];
-				break;
-			case "forgeSigil":
-				self.stones = [];
 				break;
 		}
 		$scope.$apply();
