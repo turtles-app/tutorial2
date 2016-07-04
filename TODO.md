@@ -1,18 +1,37 @@
 
-REQUIRED IMAGES
-	- Crafter frame
-	- Resonance Rune
-	- Background ideas
 
 
 REQUIRED COMPONENTS
-	- Workspace INPUTS
-		- Crafter INPUTS
-	- Workspace OUTPUTS
-		- CRAFTER OUTPUTS
+	- Inspector
+		-Tools:
+			-Text for each tool
+			-Normalized images
+				-Changing sizes in toolbelt
+		-Sigils:
+			-Name of sigil + image
+			-Type of sigil
+			-Known contents
+			-Tree of construction
+		-Stones:
+			-Name, Image
+			-Known resonant sigils
+		-Runes:
+			-Image, text
+			-Branch?
+	- Dropping trash into inspector
+		- Give it drag data and custom-bothable directive
 
 
 FURTHER ON:
-	- Inspector
+	- Allow trashing inspected tool to clear
+	- Normalize Tool image sizes
 	- Rune Tree
 	- POJO of equivalents
+	-Rune Crafter
+
+REQUIRED IMAGES
+	- Resonance Rune
+	- Background ideas
+
+BUGS:
+	- Forge framework image not scaled w/ percentages

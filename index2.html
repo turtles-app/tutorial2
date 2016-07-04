@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="./js/controllers/sigilController.js"></script>
 	<script type="text/javascript" src="./js/controllers/toolController.js"></script>
 	<script type="text/javascript" src="./js/controllers/workspaceController.js"></script>
+	<script type="text/javascript" src="./js/controllers/inspectorController.js"></script>
 	
 	<!-- directives -->
 	<script type="text/javascript" src="./js/directives/draggable.js"></script>
@@ -33,6 +34,7 @@
 	<link rel="stylesheet" type="text/css" href="./styles/sigilSpace.css">
 	<link rel="stylesheet" type="text/css" href="./styles/inspector.css">
 	<link rel="stylesheet" type="text/css" href="./styles/workspace.css">
+	<link rel="stylesheet" type="text/css" href="./styles/inspectorSpace.css">
 
 </head>
 <body ng-app="app">
@@ -86,10 +88,11 @@
 			<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png"custom-draggable type="'tool'" index="$index">
 			<img ng-src="./img/trash.png" class="tool" id="trashCan" custom-droppable drop-allowed="toolbox.trashAllowed" on-drop="toolbox.trashDrop">
 		</div>
-		<div id="bottomWrap">
-			<div id="inspectorWrap">
-				<div id="inspector">inspector</div>
-				<div id="inspectorTextLine">Text representation of the thing being inspected</div>
+		<div id="bottomWrap" ng-controller="inspectorController as inspector">
+			<div id="inspectorWrap" >
+				<div id="inspector" custom-droppable drop-allowed="inspector.dropAllowed" on-drop="inspector.drop">inspector</div>
+				<img ng-src="{{inspector.img}}" class="inspectedTool balls">
+				<div id="inspectorTextLine">{{inspector.content}}</div>
 			</div>
 		</div> <!-- End bottomWrap -->
 	</div>  <!-- End dataController -->
