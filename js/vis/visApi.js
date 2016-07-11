@@ -4,7 +4,7 @@
 var inspectorContainer = document.getElementById("inspectorContainer");
 var inspectorOptions = {
 	nodes: {physics: false},
-	layout: {hierarchical: {enabled: true, direction: 'LR'}},
+	layout: {hierarchical: {enabled: true, direction: 'RL'}},
 	// interaction: {dragView: false}
 };
 
