@@ -5,6 +5,8 @@
 	<!-- dependencies -->
 	<script type="text/javascript" src="./js/dependencies/node_modules/angular/angular.js"></script>
 	<script type="text/javascript" src="./js/dependencies/node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+	<script type="text/javascript" src="./js/dependencies/lodash.min.js"></script>
+	<script type="text/javascript" src="./js/dependencies/node_modules/vis/dist/vis.js"></script>
 
 	<!-- set engine -->
 	<script type="text/javascript" src="./js/dependencies/engine/setEngine.js"></script>
@@ -25,6 +27,7 @@
 	<script type="text/javascript" src="./js/directives/draggable.js"></script>
 	<script type="text/javascript" src="./js/directives/droppable.js"></script>
 
+
 	<!-- styles -->
 	<link rel="stylesheet" type="text/css" href="./styles/angular-toastr.css">
 	<link rel="stylesheet" type="text/css" href="./styles/styles2.css">
@@ -35,6 +38,7 @@
 	<link rel="stylesheet" type="text/css" href="./styles/inspector.css">
 	<link rel="stylesheet" type="text/css" href="./styles/workspace.css">
 	<link rel="stylesheet" type="text/css" href="./styles/inspectorSpace.css">
+	<link rel="stylesheet" type="text/css" href="./js/dependencies/node_modules/vis/dist/vis.css">
 
 </head>
 <body ng-app="app">
@@ -89,10 +93,20 @@
 			<img ng-src="./img/trash.png" class="tool" id="trashCan" custom-droppable drop-allowed="toolbox.trashAllowed" on-drop="toolbox.trashDrop">
 		</div>
 		<div id="bottomWrap" ng-controller="inspectorController as inspector">
+		<!-- Image of Inspected Set -->
+		<div ng-if="inspector.targetType==='sigil'" id="inspectedSigilWrap">
+			<p ng-bind-html="inspector.target.strEquivalents[inspector.target.eqActiveIndex] | html" id="inspectedSigilStr"></p>
+			<img  ng-src="./img/{{inspector.target.type}}.png" class="inspectedSigil"custom-draggable index="$index" type="'sigil'">		
+		</div>
 			<div id="inspectorWrap" >
-				<div id="inspector" custom-droppable drop-allowed="inspector.dropAllowed" on-drop="inspector.drop">inspector</div>
-				<img ng-src="{{inspector.img}}" class="inspectedTool balls">
+				<div id="inspector" custom-droppable drop-allowed="inspector.dropAllowed" on-drop="inspector.drop">
+					inspector
+					<div id="inspectorContainer" ng-show="inspector.targetType==='sigil'"></div>
+				</div>
+				<img ng-if="inspector.img!=''" ng-src="{{inspector.img}}" class="inspectedTool balls">
 				<div id="inspectorTextLine">{{inspector.content}}</div>
+				<!-- vis.js configurations -->
+				<script type="text/javascript" src="./js/vis/visApi.js"></script>
 			</div>
 		</div> <!-- End bottomWrap -->
 	</div>  <!-- End dataController -->

@@ -4,6 +4,7 @@ var union = function(name, x, y) {
 	var unionSyntax = [x.equivalents[x.eqActiveIndex], 'U', y.equivalents[y.eqActiveIndex]];
 	var res = new Set("union", name, unionSyntax);
 	res.type = "fuse";
+	res.simple = false;
 	//Put everything from x into res
 	x.elements.forEach(function(e, i, list) {
 		res.putIn(e);
@@ -21,6 +22,7 @@ var union = function(name, x, y) {
 			res.putIn(e);		}
 	});
 
+	res.components.push(x, y);
 	return res;
 }
 
@@ -30,6 +32,7 @@ var intersection = function(name, x, y) {
 	//Create the new set (will be empty)
 	var res = new Set("intersection", intersectSyntax);
 	res.type = "trim";
+	res.simple = false;
 	//Put the common elements from x into res
 	x.elements.forEach(function(element, index, list) {
 		var goesIn = false;
@@ -41,6 +44,7 @@ var intersection = function(name, x, y) {
 		if (goesIn) res.putIn(element);		
 	});
 
+	res.components.push(x, y);
 	return res;
 };
 

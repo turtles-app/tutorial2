@@ -50,10 +50,12 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 
 	//Create union
 	self.gamma = union(self.sigilNames.shift(),self.alpha, self.beta);
+	self.gamma.groupIndex = 2;
 
 	self.runes.push(self.rune1);
 	self.stones.push(self.ruby);
 	self.sigils.push(self.alpha);
+	self.sigils.push(self.beta);
 	self.sigils.push(self.gamma);
 
 	//Unused data

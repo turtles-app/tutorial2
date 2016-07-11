@@ -12,3 +12,13 @@ app.filter('html',function($sce){
     }
 });
 
+// Uses regex to removing preceding '&' from string
+// i.e. '&beta' > 'beta'
+function unEscape(str) {
+	var re = new RegExp("&(.*);");
+	var match = str.match(re);
+	console.log(match[1]);
+	return match[1];
+};
+
+unEscape('&beta');

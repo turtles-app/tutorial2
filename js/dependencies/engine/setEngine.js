@@ -15,9 +15,10 @@ var Set = function (groupName, name, firstEquivalence) {
 		this.equivalents.push(firstEquivalence);
 	}
 	this.type = "sigil";
+	this.simple = true;
 	this.eqActiveIndex = 0;
 	this.isSet = true;
-
+	this.components = [];
 };
 
 		//////////////////////

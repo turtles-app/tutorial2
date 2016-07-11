@@ -19,7 +19,7 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 			case "sigil":
 			case "rune":
 			case "stone":
-				if( self.tool != ""){
+				if( self.tool === "forge"){
 					return true;
 				};
 				break;

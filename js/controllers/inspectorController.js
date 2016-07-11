@@ -6,8 +6,29 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 	self.target = null; //Thing being selected
 	self.content = "" //Core explanation text of selected thing
 	self.img = "";
-	
+	self.sigilTreeData = null; //Stores visjs network data
+	self.network = null;
 
+	var treeData = sigilTreeData(data.sigils[0], 0, {});
+	var nodes = treeData.nodes;
+	var edges = treeData.edges;
+	self.sigilTreeData = {
+		nodes: nodes,
+		edges: edges
+	};
+
+	self.network = new vis.Network(inspectorContainer, self.sigilTreeData, inspectorOptions);
+	self.network.fit();	
+
+	self.findNodeIds = function () {
+		var res = [];
+		self.sigilTreeData.nodes.forEach(function (node) {
+			res.push(node.id);
+		});
+		return res;
+	};
+	
+	// window.onresize = function() {self.network.fit();}
 	self.dropAllowed = function () {
 		switch (dragData.type) {
 			case "sigil":
@@ -28,8 +49,31 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 		self.target = null;
 		self.content = "";
 		self.img = "";
+		self.targetType = dragData.type;
 		switch (dragData.type) {
 			case 'sigil':
+				self.target = data.sigils[dragData.index];
+				var treeData = sigilTreeData(self.target, 0, {});
+				var nodes = treeData.nodes;
+				var edges = treeData.edges;
+				self.sigilTreeData = {
+					nodes: nodes,
+					edges: edges
+				};
+				var str = unEscape(self.target.equivalents[self.target.eqActiveIndex]);
+				if (!self.target.simple) { 
+					var tmp = self.target.type;
+					if (self.target.type === 'fuse') tmp += "d";
+					tmp = tmp.charAt(0).toUpperCase() + tmp.slice(1);
+					self.content = tmp + " sigil: " + str;
+				} else {
+					self.content = "Sigil: " + str;
+				}
+				self.network = new vis.Network(inspectorContainer, self.sigilTreeData, inspectorOptions);
+				self.network.fit();
+				var nodeIds = self.findNodeIds();
+				console.log(nodeIds);
+				break;
 			case 'tool':
 				// Handle different tools
 				self.img = "./img/" + data.tools[dragData.index] + ".png";
@@ -38,9 +82,12 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 						self.content = "Use the forge to craft new Sigils from stones";
 						break;
 				}
-				// console.log("inspecting set");
 				break;
 		}
+		dragData = {
+			type: "",
+			index: null
+		};
 		$scope.$apply();
 	};
 }]);
