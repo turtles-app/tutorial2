@@ -8,10 +8,9 @@ REQUIRED COMPONENTS
 			-Normalized images
 				-Changing sizes in toolbelt
 		-Sigils:
-			-Name of sigil + image
-			-Type of sigil
 			-Known contents
-			-Tree of construction
+			-Sigil Composition Tree:
+				- Positioning
 		-Stones:
 			-Name, Image
 			-Known resonant sigils

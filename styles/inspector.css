@@ -6,11 +6,20 @@
 
 }
 #inspectorTextLine{
-	position:inherit;
+	position:absolute;
 	border:1px solid black;
 	width:100%;
 	border:2px solid black;
-	float:bottom;
+	/*float:bottom;*/
+	display: inline-block;
+	height: 20%;
+	bottom: 7%;
+}
+
+.inspectorResonantStone {
+	display: inline-block;
+	position: relative;
+	height: 60%;
 }
 
 #inspectorContainer {

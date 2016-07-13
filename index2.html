@@ -37,7 +37,7 @@
 	<link rel="stylesheet" type="text/css" href="./styles/sigilSpace.css">
 	<link rel="stylesheet" type="text/css" href="./styles/inspector.css">
 	<link rel="stylesheet" type="text/css" href="./styles/workspace.css">
-	<link rel="stylesheet" type="text/css" href="./styles/inspectorSpace.css">
+	<!-- <link rel="stylesheet" type="text/css" href="./styles/inspectorSpace.css"> -->
 	<link rel="stylesheet" type="text/css" href="./js/dependencies/node_modules/vis/dist/vis.css">
 
 </head>
@@ -104,7 +104,13 @@
 					<div id="inspectorContainer" ng-show="inspector.targetType==='sigil'"></div>
 				</div>
 				<img ng-if="inspector.img!=''" ng-src="{{inspector.img}}" class="inspectedTool balls">
-				<div id="inspectorTextLine">{{inspector.content}}</div>
+				<div id="inspectorTextLine">
+					{{inspector.content}}
+					<div ng-show="inspector.targetType==='sigil'">
+						<p>Known Resonant Stones</p>
+						<img ng-repeat="stone in inspector.resonantStones" ng-src="./img/{{stone.name}}.png" class="inspectorResonantStone">
+					</div>
+				</div>
 				<!-- vis.js configurations -->
 				<script type="text/javascript" src="./js/vis/visApi.js"></script>
 			</div>

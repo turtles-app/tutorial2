@@ -47,6 +47,7 @@ Set.prototype.setKnownElements = function(facts) {
 		if (elIsKnown) known.push(element);
 	});
 	this.knownElements = known;
+	return this.knownElements;
 }
 
 //	Function that returns stringified syntax
