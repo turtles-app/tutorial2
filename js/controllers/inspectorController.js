@@ -53,6 +53,11 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 		self.resonantStones = [];
 		self.targetType = dragData.type;
 		switch (dragData.type) {
+			case 'stone':
+				self.target = data.stones[dragData.index];
+				self.content = "STONE: " + self.target.name;
+				self.img = "./img/" + self.target.name + ".png";
+				break;
 			case 'sigil':
 				self.target = data.sigils[dragData.index];
 				self.resonantStones = self.target.setKnownElements(data.runes);
@@ -70,9 +75,9 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 					var tmp = self.target.type;
 					if (self.target.type === 'fuse') tmp += "d";
 					tmp = tmp.charAt(0).toUpperCase() + tmp.slice(1);
-					self.content = tmp + " Sigil: " + str;
+					self.content = tmp + " SIGIL: " + str;
 				} else {
-					self.content = "Sigil: " + str;
+					self.content = "SIGIL: " + str;
 				}
 				self.network = new vis.Network(inspectorContainer, self.sigilTreeData, inspectorOptions);
 				self.network.fit();
@@ -84,7 +89,7 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				self.img = "./img/" + data.tools[dragData.index] + ".png";
 				switch (data.tools[dragData.index]) {
 					case "forge":
-						self.content = "Use the forge to craft new Sigils from stones";
+						self.content = "Use the FORGE to craft new Sigils from stones";
 						break;
 				}
 				break;

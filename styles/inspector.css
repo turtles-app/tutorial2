@@ -8,19 +8,23 @@
 #inspectorTextLine{
 	position:absolute;
 	border:1px solid black;
-	width:100%;
+	width:95%;
 	border:2px solid black;
 	/*float:bottom;*/
 	display: inline-block;
-	height: 20%;
-	bottom: 7%;
+	height: 30%;
+	bottom: 2%;
+	left: 2.5%;
 }
 
 .inspectorResonantStone {
 	display: inline-block;
 	position: relative;
-	height: 60%;
+	height: 40%;
+	margin-left: 2%;
 }
+
+
 
 #inspectorContainer {
 	position: absolute;
@@ -59,5 +63,6 @@
 	position: absolute;
 	display: block;
 	left: 40%;
-	bottom: 30%;
+	height: 45%;
+	bottom: 35%;
 }
