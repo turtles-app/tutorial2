@@ -89,7 +89,8 @@
 			<div id="treeWrap">
 				Runic Tree
 				<!-- PLACEHOLDER IMAGE OF SINGLE RUNE -->
-				<img id="placeholderRune" src="./img/rune-sigil-ruby.png">
+				<!-- <img id="placeholderRune" src="./img/rune-sigil-ruby.png"> -->
+				<img id="placeholderRune" ng-repeat="rune in data.runes" ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png">
 			</div> <!-- End of Rune Tree -->
 			</div> 
 

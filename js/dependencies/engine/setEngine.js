@@ -122,6 +122,7 @@ var Element = function (name, set, color) {
 //		"x is contained in A, because [fact1, fact2, ...fact_n]", OR
 //		"x is NOT contained in A, because [fact1, fact2, ...fact_n]"
 var Fact = function (elementName, isIn, setSyntax) {
+	var that = this;
 	this.subject = "containment"; //These objects are facts about containment, not inclusion, or equality
 	this.simple = typeof(setSyntax) === 'string'; //boolean -- true if setSyntax is a string, false if it's a syntax
 	this.elementName = elementName;
@@ -133,8 +134,37 @@ var Fact = function (elementName, isIn, setSyntax) {
 	if (!isIn) tmpStr = ' is not in ';
 	this.str = elementName + tmpStr + stringifySyntax(setSyntax);;
 	this.groupIndex;
+
+	///////////////////////	
+	// Getter Properties //
+	///////////////////////
+		// Returns type of the Set used to make the Fact
+	Object.defineProperty(that, "setType", {
+		get: function () {
+			var res = "";
+			if (that.simple) {
+				res = "sigil";
+			} else {
+				// If Sigil is compound, check its type
+				switch (setSyntax[1]) {
+					case "u": //Union
+						res = "fuse";
+						break;
+					case "n": //Intersection
+						res = "trim";
+						break;
+					default:
+						res = "sigil";
+						break;
+				}
+			}
+			return res;
+		}
+	})
+
 };
 
+// Function used to sort elements, sets, and facts
 var sortGroup = function (a, b) {
 	return a.groupIndex - b.groupIndex;
 }
