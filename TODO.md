@@ -4,28 +4,27 @@
 REQUIRED COMPONENTS
 	- Inspector
 		-Tools:
-			-Text for each tool
+			-Inspecting Trash --LEO --> DUE Saturday 23/7 
+				- Give it drag data and custom-bothable directive
 			-Normalized images
 				-Changing sizes in toolbelt
 		-Sigils:
-			-Known contents
-			-Sigil Composition Tree:
-				- Positioning
+			-Related Runes (how to visualize?) --Ryan --> DUE Saturday 23/7
+			-Sigil Composition Tree Positioning
 		-Stones:
-			-Name, Image
-			-Known resonant sigils
+			-Related Runes (how to visualize?)
 		-Runes:
 			-Image, text
 			-Branch?
-	- Dropping trash into inspector
-		- Give it drag data and custom-bothable directive
+		
 
 
 FURTHER ON:
-	- Allow trashing inspected tool to clear
+	- Allow trashing inspected tool to clear inspector
 	- Normalize Tool image sizes
 	- Rune Tree
-	- POJO of equivalents
+	- Rework Set Engine
+		- POJO equivalents
 	-Rune Crafter
 
 REQUIRED IMAGES

@@ -24,7 +24,24 @@
 	margin-left: 2%;
 }
 
+.inspectorResonantSigil {
+	width: 10%;
+	height: 40%;
+}
 
+.inspectorResonantSigilImg {
+	display: inline-block;
+	position: relative;
+	height: 100%;
+	margin-left: 5%;
+}
+.inspectorResonantSigilStr {
+	display: inline;
+	position: relative;
+	left: 33%;
+	bottom: 40%;
+	/*top: 1%;*/
+}
 
 #inspectorContainer {
 	position: absolute;

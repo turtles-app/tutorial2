@@ -9,6 +9,7 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 	self.sigilTreeData = null; //Stores visjs network data
 	self.network = null;
 	self.resonantStones = []; //Stones resonating with inspected sigil
+	self.resonantSigils = [] //Sigils resonating with inspected stone
 
 	var treeData = sigilTreeData(data.sigils[0], 0, {});
 	var nodes = treeData.nodes;
@@ -52,6 +53,7 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 		//self.explanation = "";
 		self.img = "";
 		self.resonantStones = [];
+		self.resonantSigils = [];
 		self.targetType = dragData.type;
 		switch (dragData.type) {
 			case 'stone':
@@ -59,6 +61,8 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				self.content = "STONE: " + self.target.name;
 				// self.explanation = "Stones can be forged into Sigils or embedded into Runes."
 				self.img = "./img/" + self.target.name + ".png";
+				self.resonantSigils = self.target.knownContainingSets(data.runes, data.sigils);
+				console.log(self.resonantSigils);
 				break;
 			case 'sigil':
 				self.target = data.sigils[dragData.index];

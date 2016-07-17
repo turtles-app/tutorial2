@@ -50,6 +50,7 @@ Set.prototype.setKnownElements = function(facts) {
 	return this.knownElements;
 }
 
+
 //	Function that returns stringified syntax
 var stringifySyntax = function (syntax) {
 	switch (typeof(syntax)) {
@@ -116,6 +117,24 @@ var Element = function (name, set, color) {
 
 	this.isSet=false;
 }
+
+
+// Find sets in which an element is known to 
+// reside, based on a list of facts
+Element.prototype.knownContainingSets = function (facts, sets) {
+	var that = this;
+	var res = [];
+	var relevantFacts = [];
+	facts.forEach(function (fact) {
+		if (fact.elementName === that.name && fact.isIn) relevantFacts.push(fact);
+	});
+	sets.forEach(function (set) {
+		relevantFacts.forEach(function (fact) {
+			if (_.isEqual(set.equivalents[set.eqActiveIndex], fact.setSyntax)) res.push(set);
+		});
+	});
+	return res;
+};
 
 
 //	Fact object represents a fact of the form
