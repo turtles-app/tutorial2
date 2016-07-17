@@ -11,8 +11,6 @@ REQUIRED COMPONENTS
 		-Sigils:
 			-Related Runes (how to visualize?) --Ryan --> DUE Saturday 23/7
 			-Sigil Composition Tree Positioning
-		-Stones:
-			-Related Runes (how to visualize?)
 		-Runes:
 			-Image, text
 			-Branch?

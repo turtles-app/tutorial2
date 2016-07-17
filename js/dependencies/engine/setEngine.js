@@ -118,6 +118,9 @@ var Element = function (name, set, color) {
 	this.isSet=false;
 }
 
+			/////////////////////
+			// Element Methods //
+			/////////////////////
 
 // Find sets in which an element is known to 
 // reside, based on a list of facts
@@ -136,6 +139,15 @@ Element.prototype.knownContainingSets = function (facts, sets) {
 	return res;
 };
 
+// Find facts related to a given element
+Element.prototype.relevantFacts = function (facts) {
+	var that = this;
+	var res = [];
+	facts.forEach(function (fact) {
+		if (fact.elementName === that.name) res.push(fact);
+	});
+	return res;
+};
 
 //	Fact object represents a fact of the form
 //		"x is contained in A, because [fact1, fact2, ...fact_n]", OR
@@ -179,7 +191,7 @@ var Fact = function (elementName, isIn, setSyntax) {
 			}
 			return res;
 		}
-	})
+	});
 
 };
 

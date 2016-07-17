@@ -32,17 +32,50 @@
 .inspectorResonantSigilImg {
 	display: inline-block;
 	position: relative;
-	height: 100%;
+	height: 50%;
 	margin-left: 5%;
+	bottom: 20%;
 }
 .inspectorResonantSigilStr {
 	display: inline;
 	position: relative;
-	left: 33%;
-	bottom: 40%;
-	/*top: 1%;*/
+	left: 135%;
+	top: 11%;
 }
 
+/*Relevant Runes*/
+.inspectorRelevantRune {
+	display: inline-block;
+	position: relative;
+	height: 30%;
+	margin-left: 5%;
+}
+.inspectorRelevantRuneImg {
+	display: inline-block;
+	position: relative;
+	height: 50%;
+	bottom: 5%;
+}
+.inspectorRelevantRuneStr {
+	position: absolute;
+	display: inline-block;
+	/*top: 33%;*/
+	left: 35%;
+}
+
+#inspectStone-sigils {
+	display: inline-block;
+	width: 20%;
+	position: absolute;
+
+}
+
+#inspectStone-runes {
+	display: inline-block;
+	width: 20%;
+	position: absolute;
+	left: 30%;
+}
 #inspectorContainer {
 	position: absolute;
 	display: block;
@@ -81,5 +114,5 @@
 	display: block;
 	left: 40%;
 	height: 45%;
-	bottom: 35%;
+	bottom: 45%;
 }

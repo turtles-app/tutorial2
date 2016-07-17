@@ -10,6 +10,7 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 	self.network = null;
 	self.resonantStones = []; //Stones resonating with inspected sigil
 	self.resonantSigils = [] //Sigils resonating with inspected stone
+	self.relevantRunes =  [] //Runes relating to inspected thing
 
 	var treeData = sigilTreeData(data.sigils[0], 0, {});
 	var nodes = treeData.nodes;
@@ -50,10 +51,10 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 	self.drop = function () {
 		self.target = null;
 		self.content = "";
-		//self.explanation = "";
 		self.img = "";
 		self.resonantStones = [];
 		self.resonantSigils = [];
+		self.relevantRunes = [];
 		self.targetType = dragData.type;
 		switch (dragData.type) {
 			case 'stone':
@@ -62,7 +63,8 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				// self.explanation = "Stones can be forged into Sigils or embedded into Runes."
 				self.img = "./img/" + self.target.name + ".png";
 				self.resonantSigils = self.target.knownContainingSets(data.runes, data.sigils);
-				console.log(self.resonantSigils);
+				self.relevantRunes = self.target.relevantFacts(data.runes);
+				console.log(self.relevantRunes);
 				break;
 			case 'sigil':
 				self.target = data.sigils[dragData.index];
