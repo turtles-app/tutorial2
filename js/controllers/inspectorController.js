@@ -49,6 +49,7 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 	self.drop = function () {
 		self.target = null;
 		self.content = "";
+		//self.explanation = "";
 		self.img = "";
 		self.resonantStones = [];
 		self.targetType = dragData.type;
@@ -56,6 +57,7 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 			case 'stone':
 				self.target = data.stones[dragData.index];
 				self.content = "STONE: " + self.target.name;
+				// self.explanation = "Stones can be forged into Sigils or embedded into Runes."
 				self.img = "./img/" + self.target.name + ".png";
 				break;
 			case 'sigil':
@@ -79,6 +81,8 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				} else {
 					self.content = "SIGIL: " + str;
 				}
+				// self.explanation = "Simple Sigils resonate with Stones used to forge them. Complex Sigils resonate with (some of) the same Stones as their component Sigils."
+				//NOTE: clarify "some of" above
 				self.network = new vis.Network(inspectorContainer, self.sigilTreeData, inspectorOptions);
 				self.network.fit();
 				var nodeIds = self.findNodeIds();
@@ -89,7 +93,16 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				self.img = "./img/" + data.tools[dragData.index] + ".png";
 				switch (data.tools[dragData.index]) {
 					case "forge":
-						self.content = "Use the FORGE to craft new Sigils from stones";
+						self.content = "TOOL: Forge. Use this to FORGE new Sigils from Stones";
+						//self.explanation = "Drag any number of Stones into the SIGIL SLOT on the Forge. Then, drag the Sigil Slot into the Sigil Area to forge a Sigil that resonates with those Stones."
+						break;
+					case "crafter":
+						self.content = "TOOL: Crafter. Use this to CRAFT new Runes from Sigils and Stones";
+						//self.explanation = "Drag a Sigil into the Sigil Slot on the Crafter. Then, Drag a Stone into the STONE SLOT. Drag the Rune into the Rune Area to craft a new Rune embedded with the Stone and engraved with the Sigil."
+						break;
+					case "fuser":
+						self.content = "TOOL: Fuser. USe this to FUSE existing Sigils to form a new Sigil"
+						//self.explanation = "Drag an existing Sigil to each side of the FUSED SIGIL SLOT on the FUSER. Then, drag the Fused Sigil Slot into the Sigil Area to fuse a new Sigil. Any Stone that resonates with EITHER existing Sigil also resonates with the new Sigil. The Inspector can only show the Resonant Stones if there is a Rune embedded with the Stone and engraved with the Sigil."
 						break;
 				}
 				break;
