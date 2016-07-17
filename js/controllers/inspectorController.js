@@ -69,8 +69,11 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 			case 'sigil':
 				self.target = data.sigils[dragData.index];
 				self.resonantStones = self.target.setKnownElements(data.runes);
-				console.log("resonant stones:");
-				console.log(self.resonantStones);
+				self.relevantRunes = self.target.relevantFacts(data.runes);
+				console.log("facts related to sigil:");
+				console.log(self.relevantRunes);
+
+
 				var treeData = sigilTreeData(self.target, 0, {});
 				var nodes = treeData.nodes;
 				var edges = treeData.edges;
@@ -92,7 +95,6 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				self.network = new vis.Network(inspectorContainer, self.sigilTreeData, inspectorOptions);
 				self.network.fit();
 				var nodeIds = self.findNodeIds();
-				console.log(nodeIds);
 				break;
 			case 'tool':
 				// Handle different tools

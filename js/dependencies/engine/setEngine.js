@@ -50,6 +50,15 @@ Set.prototype.setKnownElements = function(facts) {
 	return this.knownElements;
 }
 
+Set.prototype.relevantFacts = function (facts) {
+	var that = this;
+	var res = [];
+	facts.forEach(function (fact) {
+		if (fact.setSyntax === that.equivalents[that.eqActiveIndex]) res.push(fact);
+	});
+	return res;
+}
+
 
 //	Function that returns stringified syntax
 var stringifySyntax = function (syntax) {

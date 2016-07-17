@@ -113,9 +113,23 @@
 				<img ng-if="inspector.img!=''" ng-src="{{inspector.img}}" class="inspectedTool">
 				<div id="inspectorTextLine">
 					{{inspector.content}}
+					<!-- INSPECTING A SIGIL -->
 					<div ng-show="inspector.targetType==='sigil'">
+						<!-- Related Stones -->
 						<p>Known Resonant Stones</p>
 						<img ng-repeat="stone in inspector.resonantStones" ng-src="./img/{{stone.name}}.png" class="inspectorResonantStone">
+						<!-- Related Runes -->
+						<div id="inspectSigil-runes">
+							<div id="inspectSigil-runeText">Runes inscribed with 
+								<p ng-bind-html="inspector.target.equivalents[inspector.target.eqActiveIndex] | html" id="inspectSigil-runeSigilName"></p>
+								<!-- {{inspector.target.equivalents[inspector.target.eqActiveIndex]}} -->
+							</div>
+							<!-- {{inspector.relevantRunes[0].str}} -->
+							<div ng-repeat="rune in inspector.relevantRunes" class="inspectorRelevantRune">
+								<p ng-bind-html="rune.setSyntax | html" class="inspectorRelevantRuneStr"></p>
+								<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="inspectorRelevantRuneImg">
+							</div>
+						</div>						
 					</div>
 					<div ng-show="inspector.targetType === 'stone'">
 						<div id="inspectStone-sigils">

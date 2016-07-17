@@ -6,14 +6,12 @@ REQUIRED COMPONENTS
 		-Tools:
 			-Inspecting Trash --LEO --> DUE Saturday 23/7 
 				- Give it drag data and custom-bothable directive
-			-Normalized images
-				-Changing sizes in toolbelt
 		-Sigils:
-			-Related Runes (how to visualize?) --Ryan --> DUE Saturday 23/7
 			-Sigil Composition Tree Positioning
 		-Runes:
 			-Image, text
 			-Branch?
+			-Related Stone and Sigil
 		
 
 
@@ -23,6 +21,7 @@ FURTHER ON:
 	- Rune Tree
 	- Rework Set Engine
 		- POJO equivalents
+		- Smarter use of getters
 	-Rune Crafter
 
 REQUIRED IMAGES
