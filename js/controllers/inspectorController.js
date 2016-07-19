@@ -109,10 +109,15 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 						//self.explanation = "Drag a Sigil into the Sigil Slot on the Crafter. Then, Drag a Stone into the STONE SLOT. Drag the Rune into the Rune Area to craft a new Rune embedded with the Stone and engraved with the Sigil."
 						break;
 					case "fuser":
-						self.content = "TOOL: Fuser. USe this to FUSE existing Sigils to form a new Sigil"
+						self.content = "TOOL: Fuser. Use this to FUSE existing Sigils to form a new Sigil"
 						//self.explanation = "Drag an existing Sigil to each side of the FUSED SIGIL SLOT on the FUSER. Then, drag the Fused Sigil Slot into the Sigil Area to fuse a new Sigil. Any Stone that resonates with EITHER existing Sigil also resonates with the new Sigil. The Inspector can only show the Resonant Stones if there is a Rune embedded with the Stone and engraved with the Sigil."
 						break;
 				}
+				break;
+			case "trash":
+				console.log("case trashCan success");
+				self.content = "TOOL: Trash. Use this to CLEAR your workspace."
+				self.img = "./img/trash.png"
 				break;
 		}
 		dragData = {

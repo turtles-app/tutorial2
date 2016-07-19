@@ -13,7 +13,7 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	//Name Lists
 	self.sigilNames = [	'&alpha;', '&beta;', '&gamma;', '&delta;', '&epsilon;', '&zeta;', '&eta;', '&theta;', '&lota;', '&kappa;', '&lambda;', '&mu;', '&nu;', '&xi;', '&omicron;', '&pi;', '&rho;', '&sigma;', '&tau;', '&upsilon;', '&phi;', '&chi;', '&psi', '&psi;', '&omega;'];
 	self.sigilTypes = ['sigil', 'fuse', 'trim', 'cleave', 'core'];
-	self.stoneNames = ["ruby", "topaz", "sapphire", "emerald", "amethyst", "quartz"];
+	self.stoneNames = ['ruby', 'topaz', 'sapphire', 'emerald', 'amethyst', 'quartz'];
 	self.tools = ['forge', 'crafter', 'fuser'];
 
 	/* 

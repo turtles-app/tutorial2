@@ -24,6 +24,7 @@
 	<script type="text/javascript" src="./js/controllers/inspectorController.js"></script>
 	
 	<!-- directives -->
+	<script type="text/javascript" src="./js/directives/bothable.js"></script>
 	<script type="text/javascript" src="./js/directives/draggable.js"></script>
 	<script type="text/javascript" src="./js/directives/droppable.js"></script>
 
@@ -108,7 +109,7 @@
 		</div>
 		<div id="toolsWrap" ng-controller="toolController as toolbox"> 
 			<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png"custom-draggable type="'tool'" index="$index">
-			<img ng-src="./img/trash.png" class="tool" id="trashCan" custom-droppable drop-allowed="toolbox.trashAllowed" on-drop="toolbox.trashDrop">
+			<img ng-src="./img/trash.png" class="tool" id="trashCan" custom-bothable type="'trash'" index="null" drop-allowed="toolbox.trashAllowed" on-drop="toolbox.trashDrop" >
 		</div>
 		<div id="bottomWrap" ng-controller="inspectorController as inspector">
 			<!-- Image of Inspected Set -->
