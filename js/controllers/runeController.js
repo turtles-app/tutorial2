@@ -4,6 +4,10 @@ app.controller("runeController", ["$scope", "$rootScope", function($scope, $root
 	self.flashingRunes = []; //List of runes which are flashing
 	self.flashing = false; //Determines whether entire rune area is flashing
 
+	self.treeData = linearRuneTreeData(data.runes);
+
+	self.network = new vis.Network(runeTreeContainer, self.treeData, runeTreeOptions);
+
 	//////////////////////////////
 	// Flashing Event Listeners //
 	//////////////////////////////

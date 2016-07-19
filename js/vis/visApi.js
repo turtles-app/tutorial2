@@ -1,12 +1,19 @@
 ////////////////////
 // Configurations //
 ////////////////////
+// Inspector Network
 var inspectorContainer = document.getElementById("inspectorContainer");
 var inspectorOptions = {
 	nodes: {physics: false},
 	layout: {hierarchical: {enabled: true, direction: 'RL'}},
 	// interaction: {dragView: false}
 };
+// Rune Tree Network
+var runeTreeContainer = document.getElementById("runeTreeContainer");
+var runeTreeOptions = {
+	nodes: {physics: false},
+	layout: {hierarchical: {enabled: true, direction: 'UD'}}
+}
 
 //////////////////////////////
 // Data Formating Functions //
@@ -24,7 +31,11 @@ var sigilTreeData = function (set, initialLevel, occurances) {
 		occurances[setName] = 1;
 	}
 	var initialNode = {
-		'id': id, 'title': setName, level: initialLevel, 'shape': 'image', image: './img/inspector-img/inspector-' + set.type + '.png'
+		'id'   : id, 
+		'title': setName,
+		'level': initialLevel,
+		'shape': 'image',
+		'image': './img/inspector-img/inspector-' + set.type + '.png'
 	};
 	nodes.push(initialNode);
 	// Draw edges and recurse if sigil is composite
@@ -70,5 +81,38 @@ var sigilTreeData = function (set, initialLevel, occurances) {
 		occurances: occurances
 	};
 
+	return res;
+}
+
+var linearRuneTreeData = function (runes) {
+	var nodes = [];
+	var edges = [];
+	var res   = [];
+	runes.forEach(function (rune, index) {
+		nodes.push(
+			{
+				'id': index,
+				'title': rune.str,
+				'level': index,
+				'shape': 'image',
+				'image': "./img/rune-"+ rune.setType + "-" + rune.elementName + ".png",
+			}
+		); //end nodes push
+
+		if (nodes.length > 1) {
+			console.log()
+			edges.push(
+				{
+					'from': nodes[index - 1].id, 
+					'to'  : nodes[index].id
+				}
+			)
+		}
+	}); //end forEach rune
+	res = {
+		'nodes': new vis.DataSet(nodes),
+		'edges': new vis.DataSet(edges)
+	};
+	console.log(res);
 	return res;
 }

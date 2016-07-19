@@ -43,16 +43,17 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 
 	//Initialize Runes
 	self.rune1 = new Fact(self.ruby.name, true, self.alpha.equivalents[0]);
+	self.rune2 = new Fact(self.topaz.name, true, self.beta.equivalents[0]);
 
 	//Put stones in sigils
 	self.alpha.putIn(self.ruby);
-	self.beta.putIn(self.amethyst);
+	self.beta.putIn(self.topaz, self.sapphire, self.emerald, self.amethyst);
 
 	//Create union
 	self.gamma = union(self.sigilNames.shift(),self.alpha, self.beta);
 	self.gamma.groupIndex = 2;
 
-	self.runes.push(self.rune1);
+	self.runes.push(self.rune1, self.rune2);
 	self.stones.push(self.ruby);
 	self.sigils.push(self.alpha);
 	self.sigils.push(self.beta);

@@ -1,3 +1,12 @@
+#runeTreeContainer {
+	display: inline-block;
+	position: absolute;
+	height: 50%;
+	width: 30%;
+}
+
+
+
 #placeholderRune {
 	display: inline-block;
 	position: absolute;

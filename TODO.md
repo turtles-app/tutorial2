@@ -2,7 +2,7 @@
 
 
 REQUIRED COMPONENTS
-	- Inspector
+	- INSPECTOR
 		-Tools:
 			-Inspecting Trash --LEO --> DUE Saturday 23/7 
 				- Give it drag data and custom-bothable directive
@@ -12,17 +12,20 @@ REQUIRED COMPONENTS
 			-Image, text
 			-Branch?
 			-Related Stone and Sigil
-		
+	- RUNE TREE
+		-Image generation of rune combinatorix
+		-Selecting a rune for crafting
+	- RUNE CRAFTER
+		-Image generation for wireframe
+		-DnD functionality for rune creation		
 
 
 FURTHER ON:
 	- Allow trashing inspected tool to clear inspector
 	- Normalize Tool image sizes
-	- Rune Tree
 	- Rework Set Engine
 		- POJO equivalents
 		- Smarter use of getters
-	-Rune Crafter
 
 REQUIRED IMAGES
 	- Resonance Rune
