@@ -86,12 +86,23 @@
 					<img class="forgeStones" ng-repeat="stone in data.selectedStones" ng-src="./img/{{stone.name}}.png">
 				</div>
 			</div>
-			<div id="runeTreeContainer" ng-controller="runeController as rune">
-				Runic Tree
-				<!-- PLACEHOLDER IMAGE OF SINGLE RUNE -->
-				<!-- <img id="placeholderRune" src="./img/rune-sigil-ruby.png"> -->
-				<!-- <img id="placeholderRune" ng-repeat="rune in data.runes" ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png"> -->
-			</div> <!-- End of Rune Tree -->
+			<div ng-controller="runeController as rune"> 
+				<div id="runeTreeContainer">
+					Runic Tree
+					<!-- PLACEHOLDER IMAGE OF SINGLE RUNE -->
+					<!-- <img id="placeholderRune" src="./img/rune-sigil-ruby.png"> -->
+					<!-- <img id="placeholderRune" ng-repeat="rune in data.runes" ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png"> -->
+				</div> <!-- End of Rune Tree -->
+				<div>
+					<p id="selectedRuneText1">
+						Crafting Rune:
+					</p>
+					<img ng-src="./img/rune-{{rune.selectedRune.setType}}-{{rune.selectedRune.elementName}}.png" id="selectedRune" custom-draggable type="'rune'" index="rune.selectedRune.groupIndex">
+					<p id="selectedRuneText2">
+						{{rune.selectedRune.str}}
+					</p>
+				</div>
+			</div> <!-- End of runeController -->
 			</div> 
 
 		</div>

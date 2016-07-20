@@ -14,7 +14,6 @@ REQUIRED COMPONENTS
 			-Related Stone and Sigil
 	- RUNE TREE
 		-Image generation of rune combinatorix
-		-Selecting a rune for crafting
 	- RUNE CRAFTER
 		-Image generation for wireframe
 		-DnD functionality for rune creation		

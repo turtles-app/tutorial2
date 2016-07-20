@@ -1,14 +1,14 @@
 ////////////////////
 // Configurations //
 ////////////////////
-// Inspector Network
+// Inspector Network //
 var inspectorContainer = document.getElementById("inspectorContainer");
 var inspectorOptions = {
 	nodes: {physics: false},
 	layout: {hierarchical: {enabled: true, direction: 'RL'}},
 	// interaction: {dragView: false}
 };
-// Rune Tree Network
+// Rune Tree Network //
 var runeTreeContainer = document.getElementById("runeTreeContainer");
 var runeTreeOptions = {
 	nodes: {physics: false},
@@ -18,6 +18,7 @@ var runeTreeOptions = {
 //////////////////////////////
 // Data Formating Functions //
 //////////////////////////////
+// Inspector Network //
 var sigilTreeData = function (set, initialLevel, occurances) {
 	var nodes = [];
 	var edges = [];
@@ -84,6 +85,10 @@ var sigilTreeData = function (set, initialLevel, occurances) {
 	return res;
 }
 
+// Rune Tree Network //
+
+// Returns obj with nodes and edges for Network
+//from linear array of rune objects
 var linearRuneTreeData = function (runes) {
 	var nodes = [];
 	var edges = [];
@@ -100,7 +105,6 @@ var linearRuneTreeData = function (runes) {
 		); //end nodes push
 
 		if (nodes.length > 1) {
-			console.log()
 			edges.push(
 				{
 					'from': nodes[index - 1].id, 
@@ -110,9 +114,24 @@ var linearRuneTreeData = function (runes) {
 		}
 	}); //end forEach rune
 	res = {
-		'nodes': new vis.DataSet(nodes),
-		'edges': new vis.DataSet(edges)
+		data: { //used to draw network
+			'nodes': new vis.DataSet(nodes),
+			'edges': new vis.DataSet(edges)
+		},
+		rawData: { //used for calculation
+			'nodes': nodes,
+			'edges': edges
+		}
 	};
-	console.log(res);
+	// console.log(res);
 	return res;
-}
+};
+
+// Selects node from rune tree (called on click)
+var linearFindRuneFromNode = function (nodeId, runes) {
+	var res = null;
+	runes.forEach(function (rune) {
+		if (nodeId === rune.groupIndex) res = rune;
+	});
+	return res;
+};

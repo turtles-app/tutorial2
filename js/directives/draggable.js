@@ -12,7 +12,6 @@ app.directive("customDraggable", function(){
 			el.addEventListener("dragstart", function(ev){
 				dragData.index = scope.index;
 				dragData.type = scope.type;
-				
 			});
 		}
 	};

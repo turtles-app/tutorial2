@@ -29,21 +29,23 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 
 	//Intitialize stones
 	self.ruby = new Element(self.stoneNames.shift(), self.omega);
-	self.ruby.groupIndex = 0;
 	self.topaz = new Element(self.stoneNames.shift(), self.omega);
-	self.topaz.groupIndex = 1;
 	self.sapphire = new Element(self.stoneNames.shift(), self.omega);
-	self.sapphire.groupIndex = 2;
 	self.emerald = new Element(self.stoneNames.shift(), self.omega);
-	self.emerald.groupIndex = 3;
 	self.amethyst = new Element(self.stoneNames.shift(), self.omega);
-	self.amethyst.groupIndex = 4;		
 	self.quartz = new Element(self.stoneNames.shift(), self.omega);
+	self.ruby.groupIndex = 0;
+	self.topaz.groupIndex = 1;
+	self.sapphire.groupIndex = 2;
+	self.emerald.groupIndex = 3;
+	self.amethyst.groupIndex = 4;		
 	self.quartz.groupIndex = 5;
 
 	//Initialize Runes
 	self.rune1 = new Fact(self.ruby.name, true, self.alpha.equivalents[0]);
 	self.rune2 = new Fact(self.topaz.name, true, self.beta.equivalents[0]);
+	self.rune1.groupIndex = 0;
+	self.rune2.groupIndex = 1;
 
 	//Put stones in sigils
 	self.alpha.putIn(self.ruby);
@@ -52,7 +54,7 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	//Create union
 	self.gamma = union(self.sigilNames.shift(),self.alpha, self.beta);
 	self.gamma.groupIndex = 2;
-
+	// Push data to controller arrays
 	self.runes.push(self.rune1, self.rune2);
 	self.stones.push(self.ruby);
 	self.sigils.push(self.alpha);
@@ -117,7 +119,6 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 
 	// clear workspace after trashing, or creating new sigil
 	$rootScope.$on("clearWorkspace", function (ev, data) {
-		console.log("clearing workspace");
 		self.leftSigil = null;
 		self.rightSigil = null;
 		self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
