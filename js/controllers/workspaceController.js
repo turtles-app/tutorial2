@@ -7,6 +7,8 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 	self.tool = null;
 	// self.stones = [];
 	self.runes = [];
+	self.selectedStones = [];
+	self.selectedSigils = [];
 
 	/*
 	***Drop functionality
@@ -19,7 +21,7 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 			case "sigil":
 			case "rune":
 			case "stone":
-				if( self.tool === "forge"){
+				if( self.tool === "forge" || self.tool === "crafter"){
 					return true;
 				};
 				break;
@@ -55,10 +57,25 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 
 
 			case "stone":
-				data.selectedStones.push(data.stones.splice(dragData.index, 1)[0]);
+				if (self.tool === "crafter") {
+					var newStone = data.stones.splice(dragData.index, 1)[0];
+					data.stones = data.stones.concat(self.selectedStones);
+					data.stones.sort(sortGroup);
+					self.selectedStones = [newStone];
+				} else {
+					data.selectedStones.push(data.stones.splice(dragData.index, 1)[0]);
+				}
 				break;
 			case "sigil":
-				self.sigils.push(data.sigils.splice(dragData.index, 1)[0]);
+				if (self.tool === "crafter") {
+					var newSigil = data.sigils.splice(dragData.index, 1)[0];
+					data.sigils = data.sigils.concat(self.selectedSigils);
+					data.sigils.sort(sortGroup);
+					self.selectedSigils = [newSigil];
+				} else {
+
+				self.selectedSigils.push(data.sigils.splice(dragData.index, 1)[0]);
+				}
 				break;
 			case "rune":
 				self.runes.push(data.runes.splice(dragData.index, 1)[0]);

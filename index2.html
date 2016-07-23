@@ -81,7 +81,15 @@
 							<span id="leftFuserSigil" ng-if="data.leftSigil" ng-bind-html="data.leftSigil.equivalents[data.leftSigil.eqActiveIndex] | html"></span>
 							<span id="rightFuserSigil" ng-if="data.rightSigil" ng-bind-html="data.rightSigil.equivalents[data.rightSigil.eqActiveIndex] | html"></span>
 					</div>
-					<div ng-if="workspace.tool ==='crafter'">Crafter is visible</div>
+					<!-- Rune Crafter Workspace -->
+					<div ng-if="workspace.tool ==='crafter'" custom-droppable type="'craftedRune'" drop-allowed="workspace.dropAllowed" on-drop="workspace.drop" >
+						<div id="runeOutline"></div>
+						<div id="sigilOutline" ng-show="workspace.selectedSigils.length < 1"></div>
+						<div id="stoneOutline" ng-show="workspace.selectedStones.length === 0"></div>
+						<img ng-show="workspace.selectedStones.length > 0" ng-src="./img/{{workspace.selectedStones[0].name}}.png" id="crafterStone"></img>
+						<img ng-show="workspace.selectedSigils.length > 0" ng-src="./img/{{workspace.selectedSigils[0].type}}.png" id="crafterSigil">
+						<p ng-show="workspace.selectedStones.length > 0 && workspace.selectedSigils.length > 0" ng-bind-html="workspace.selectedStones[0].name + ' resonates in ' + workspace.selectedSigils[0].equivalents[workspace.selectedSigils[0].eqActiveIndex] | html" id="crafterStr"></p>
+					</div>
 				</div>
 				<div ng-if="workspace.tool ==='forge'" id="forgeStones">
 					<img class="forgeStones" ng-repeat="stone in data.selectedStones" ng-src="./img/{{stone.name}}.png">

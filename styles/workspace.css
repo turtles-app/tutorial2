@@ -102,3 +102,57 @@
 	font-size: 2.5em;
 }
 
+/*Rune Crafter Workspace*/
+#runeOutline {
+	display: inline-block;
+	position: absolute;
+	height: 55%;
+	width: 35%;
+	top: 20%;
+	left: 33%;
+	border: 2px solid black;
+}
+
+#sigilOutline {
+	display: inline-block;
+	position: absolute;
+	height: 20%;
+	width: 18%;
+	left: 41%;
+	top: 37%;
+	border: 2px solid black;
+}
+/*Displayed when crafter is empty*/
+#stoneOutline {
+	display: inline-block;
+	position: absolute;
+	height: 4%;
+	width: 5%;
+	top: 45%;
+	left: 48%;
+	border: 2px solid black;
+}
+/*Displayed when crafter is full (stone or sigil)*/
+#crafterStone {
+	display: inline-block;
+	position: absolute;
+	height: 8%;
+	top: 43.5%;
+	left: 49%;
+
+}
+
+#crafterSigil {
+	display: inline-block;
+	position: absolute;
+	height: 25%;
+	top: 35%;
+	left: 33.6%;
+}
+
+#crafterStr {
+	display: inline-block;
+	position: absolute;
+	left: 40%;
+	top: 23%;
+}
