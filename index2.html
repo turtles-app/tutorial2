@@ -82,13 +82,20 @@
 							<span id="rightFuserSigil" ng-if="data.rightSigil" ng-bind-html="data.rightSigil.equivalents[data.rightSigil.eqActiveIndex] | html"></span>
 					</div>
 					<!-- Rune Crafter Workspace -->
-					<div ng-if="workspace.tool ==='crafter'" custom-droppable type="'craftedRune'" drop-allowed="workspace.dropAllowed" on-drop="workspace.drop" >
-						<div id="runeOutline"></div>
-						<div id="sigilOutline" ng-show="workspace.selectedSigils.length < 1"></div>
-						<div id="stoneOutline" ng-show="workspace.selectedStones.length === 0"></div>
-						<img ng-show="workspace.selectedStones.length > 0" ng-src="./img/{{workspace.selectedStones[0].name}}.png" id="crafterStone"></img>
-						<img ng-show="workspace.selectedSigils.length > 0" ng-src="./img/{{workspace.selectedSigils[0].type}}.png" id="crafterSigil">
-						<p ng-show="workspace.selectedStones.length > 0 && workspace.selectedSigils.length > 0" ng-bind-html="workspace.selectedStones[0].name + ' resonates in ' + workspace.selectedSigils[0].equivalents[workspace.selectedSigils[0].eqActiveIndex] | html" id="crafterStr"></p>
+					<div ng-if="workspace.tool ==='crafter'" custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop" >
+						<!-- Outlines -->
+						<div id="runeOutline" ng-show="data.selectedSigils.length === 0 || data.selectedStones.length === 0"></div>
+						<div id="sigilOutline" ng-show="data.selectedSigils.length === 0"></div>
+						<div id="stoneOutline" ng-show="data.selectedStones.length === 0"></div>
+						<!-- Selected Components -->
+						<img ng-show="data.selectedStones.length > 0 && data.selectedSigils.length === 0" ng-src="./img/{{data.selectedStones[0].name}}.png" id="crafterStone"></img>
+						<img ng-show="data.selectedSigils.length > 0 && data.selectedStones.length === 0" ng-src="./img/{{data.selectedSigils[0].type}}.png" id="crafterSigil">
+						<p ng-show="data.selectedStones.length > 0 && data.selectedSigils.length > 0" ng-bind-html="data.selectedStones[0].name + ' resonates in ' + data.selectedSigils[0].equivalents[data.selectedSigils[0].eqActiveIndex] | html" id="crafterStr"></p>
+						<div ng-repeat="rune in data.selectedRunes" class="crafterJustification">
+							<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="justification-img">
+						</div>
+						<!-- Final Image of Rune -->
+						<img ng-show="data.selectedSigils.length > 0 && data.selectedStones.length > 0" ng-src="./img/rune-{{data.selectedSigils[0].type}}-{{data.selectedStones[0].name}}.png" id="crafterResult" custom-draggable type="'crafterResult'" index="null">
 					</div>
 				</div>
 				<div ng-if="workspace.tool ==='forge'" id="forgeStones">
@@ -96,7 +103,8 @@
 				</div>
 			</div>
 			<div ng-controller="runeController as rune"> 
-				<div id="runeTreeContainer">
+				<div id="runeTreeContainer" custom-droppable drop-allowed="rune.dropAllowed" on-drop="rune.drop">
+					{{data.selectedRunes.length}}
 					Runic Tree
 					<!-- PLACEHOLDER IMAGE OF SINGLE RUNE -->
 					<!-- <img id="placeholderRune" src="./img/rune-sigil-ruby.png"> -->

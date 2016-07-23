@@ -62,6 +62,8 @@ var inSyntax = function(eName, syntax, fact) {
 //of sets; either a string (set's name), or another syntax array. The second element is a string representing the operation.
 //Syntax arrays represent the set that results from an operation sets. A U (B n C) = ['A', 'U', ['B', 'n', C]]
 var contains = function(eName, syntax, facts) {
+	console.log("\ncontains:");
+	console.log({eName: eName, syntax: syntax, facts: facts});
 	var inFirst  = false;
 	var inSecond = false;
 

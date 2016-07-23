@@ -170,7 +170,7 @@ var Fact = function (elementName, isIn, setSyntax) {
 	this.setSyntax = setSyntax; //Syntax of the referenced set
 	this.justifications = []; //array of facts submited by user to justify this fact
 	this.usedJustifications = []; //subset of justifications actually necessary for justification
-	var tmpStr = ' is in ';
+	var tmpStr = ' resonates in ';
 	if (!isIn) tmpStr = ' is not in ';
 	this.str = elementName + tmpStr + stringifySyntax(setSyntax);;
 	this.groupIndex;

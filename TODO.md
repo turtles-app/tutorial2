@@ -13,10 +13,11 @@ REQUIRED COMPONENTS
 			-Branch?
 			-Related Stone and Sigil
 	- RUNE TREE
-		-Image generation of rune combinatorix
+		-Image generation for all possible runes
 	- RUNE CRAFTER
 		-Image generation for wireframe
-		-DnD functionality for rune creation		
+		-Clear crafter with trashcan (both ways)
+		-Cleanup of justification positioning		
 
 
 FURTHER ON:

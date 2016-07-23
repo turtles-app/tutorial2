@@ -8,7 +8,9 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.scroll = [];
 	self.leftSigil = null;
 	self.rightSigil = null;
+	self.selectedSigils = [];
 	self.selectedStones = [];
+	self.selectedRunes = [];
 
 	//Name Lists
 	self.sigilNames = [	'&alpha;', '&beta;', '&gamma;', '&delta;', '&epsilon;', '&zeta;', '&eta;', '&theta;', '&lota;', '&kappa;', '&lambda;', '&mu;', '&nu;', '&xi;', '&omicron;', '&pi;', '&rho;', '&sigma;', '&tau;', '&upsilon;', '&phi;', '&chi;', '&psi', '&psi;', '&omega;'];

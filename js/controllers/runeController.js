@@ -18,6 +18,40 @@ app.controller("runeController", ["$scope", "$rootScope", function($scope, $root
 	});
 
 
+
+	//////////////////////////
+	// Drop Events Handlers //
+	//////////////////////////
+	self.dropAllowed = function () {
+		switch (dragData.type) {
+			case 'crafterResult':
+				return true;
+				break;
+			default:
+				return false;
+				break;
+		}
+	};
+	self.drop = function () {
+		var valid = contains(data.selectedStones[0].name, data.selectedSigils[0].equivalents[data.selectedSigils[0].equivalents.length - 1], data.selectedRunes);
+		if (valid) {
+			var newRune = new Fact(data.selectedStones[0].name, true, data.selectedSigils[0].equivalents[data.selectedSigils[0].eqActiveIndex]);
+			newRune.groupIndex = data.runes.length;
+			data.runes.push(newRune);
+			tmpData = linearRuneTreeData(data.runes);
+			self.treeData = tmpData.data;
+			self.rawData = tmpData.rawData;
+			self.network.setData(self.treeData);			
+		}
+		data.selectedRunes = [];
+		data.stones = data.stones.concat(data.selectedStones);
+		data.selectedStones = [];
+		data.sigils = data.sigils.concat(data.selectedSigils);
+		data.selectedSigils = [];
+		$scope.$apply();
+	}
+
+
 	//////////////////////////////
 	// Flashing Event Listeners //
 	//////////////////////////////

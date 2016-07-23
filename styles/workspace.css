@@ -156,3 +156,27 @@
 	left: 40%;
 	top: 23%;
 }
+
+.crafterJustification {
+	display: inline-block;
+	position: relative;
+	height: 15%;
+	width: 6%;
+	top: 350px;
+	left: 33%;
+	margin-left: 1%;
+}
+
+.justification-img {
+	display: inline-block;
+	position: absolute;
+	height: 100%;
+}
+
+#crafterResult {
+	display: inline-block;
+	position: absolute;
+	height: 130%;
+	left: 15%;
+	top: -15%;
+}

@@ -6,9 +6,9 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 	*/
 	self.tool = null;
 	// self.stones = [];
-	self.runes = [];
-	self.selectedStones = [];
-	self.selectedSigils = [];
+	data.selectedStones = [];
+	data.selectedSigils = [];
+	data.selectedRunes = [];
 
 	/*
 	***Drop functionality
@@ -46,7 +46,7 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 					data.stones = data.stones.concat(data.selectedStones);
 					data.selectedStones = [];
 				}
-				if (self.runes.length>0){
+				if (data.selectedRunes.length>0){
 					data.runes = data.runes.concat(self.runes);
 					self.runes = [];
 				}
@@ -59,9 +59,9 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 			case "stone":
 				if (self.tool === "crafter") {
 					var newStone = data.stones.splice(dragData.index, 1)[0];
-					data.stones = data.stones.concat(self.selectedStones);
+					data.stones = data.stones.concat(data.selectedStones);
 					data.stones.sort(sortGroup);
-					self.selectedStones = [newStone];
+					data.selectedStones = [newStone];
 				} else {
 					data.selectedStones.push(data.stones.splice(dragData.index, 1)[0]);
 				}
@@ -69,16 +69,19 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 			case "sigil":
 				if (self.tool === "crafter") {
 					var newSigil = data.sigils.splice(dragData.index, 1)[0];
-					data.sigils = data.sigils.concat(self.selectedSigils);
+					data.sigils = data.sigils.concat(data.selectedSigils);
 					data.sigils.sort(sortGroup);
-					self.selectedSigils = [newSigil];
+					data.selectedSigils = [newSigil];
 				} else {
 
-				self.selectedSigils.push(data.sigils.splice(dragData.index, 1)[0]);
+				data.selectedSigils.push(data.sigils.splice(dragData.index, 1)[0]);
 				}
 				break;
 			case "rune":
-				self.runes.push(data.runes.splice(dragData.index, 1)[0]);
+				if (data.selectedRunes.indexOf(data.runes[dragData.index]) < 0) {
+					data.selectedRunes.push(data.runes[dragData.index]);
+				}
+				// self.runes.push(data.runes.splice(dragData.index, 1)[0]);
 				break;
 		}
 		$scope.$apply();
