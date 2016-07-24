@@ -144,3 +144,25 @@
 	height: 45%;
 	bottom: 45%;
 }
+
+#inscribedSigil {
+	display: inline-block;
+	position: absolute;
+	height: 60%;
+	left: 10%;
+	bottom: 5%;
+}
+
+#engravedStone {
+	display: inline-block;
+	position: absolute;
+	height: 60%;
+	left: 40%;
+	bottom: 6%
+}
+#engravedText {
+	display: inline-block;
+	position: absolute;
+	bottom: 37%;
+	left: 30%;
+}

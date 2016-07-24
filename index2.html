@@ -179,6 +179,12 @@
 
 
 					</div>
+					<div ng-show="inspector.targetType === 'rune'">
+						<p>Inscribed with Sigil: </p>
+						<img ng-src="./img/{{inspector.target.setType}}.png" id="inscribedSigil">
+						<p id="engravedText">Engraved with Stone:</p>
+						<img ng-src="./img/{{inspector.target.elementName}}.png" id="engravedStone">
+					</div>
 				</div>
 				<!-- vis.js configurations -->
 				<script type="text/javascript" src="./js/vis/visApi.js"></script>
