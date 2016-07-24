@@ -70,8 +70,6 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				self.target = data.sigils[dragData.index];
 				self.resonantStones = self.target.setKnownElements(data.runes);
 				self.relevantRunes = self.target.relevantFacts(data.runes);
-				console.log("facts related to sigil:");
-				console.log(self.relevantRunes);
 
 
 				var treeData = sigilTreeData(self.target, 0, {});
@@ -90,11 +88,15 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				} else {
 					self.content = "SIGIL: " + str;
 				}
-				// self.explanation = "Simple Sigils resonate with Stones used to forge them. Complex Sigils resonate with (some of) the same Stones as their component Sigils."
-				//NOTE: clarify "some of" above
+
 				self.network = new vis.Network(inspectorContainer, self.sigilTreeData, inspectorOptions);
 				self.network.fit();
 				var nodeIds = self.findNodeIds();
+				break;
+			case 'rune':
+				self.target = data.runes[dragData.index];
+				self.content = "RUNE: " + self.target.elementName + " resonates in " + unEscape(self.target.setSyntax) + " ( " + self.target.setSyntax + " )";
+				self.img = "./img/rune-" + self.target.setType + "-" + self.target.elementName + ".png";
 				break;
 			case 'tool':
 				// Handle different tools

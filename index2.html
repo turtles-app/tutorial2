@@ -134,12 +134,14 @@
 			</div>
 			<div id="inspectorWrap" >
 				<div id="inspector" custom-droppable drop-allowed="inspector.dropAllowed" on-drop="inspector.drop">
-					inspector
+					Inspector
 					<div id="inspectorContainer" ng-show="inspector.targetType==='sigil'"></div>
 				</div>
 				<img ng-if="inspector.img!=''" ng-src="{{inspector.img}}" class="inspectedTool">
 				<div id="inspectorTextLine">
-					{{inspector.content}}
+					<p ng-bind-html="inspector.content | html">
+					<!-- {{inspector.content}} -->
+					</p>
 					<!-- INSPECTING A SIGIL -->
 					<div ng-show="inspector.targetType==='sigil'">
 						<!-- Related Stones -->
@@ -153,7 +155,7 @@
 							</div>
 							<!-- {{inspector.relevantRunes[0].str}} -->
 							<div ng-repeat="rune in inspector.relevantRunes" class="inspectorRelevantRune">
-								<p ng-bind-html="rune.setSyntax | html" class="inspectorRelevantRuneStr"></p>
+								<!-- <p ng-bind-html="rune.setSyntax | html" class="inspectorRelevantRuneStr"></p> -->
 								<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="inspectorRelevantRuneImg">
 							</div>
 						</div>						
@@ -170,7 +172,7 @@
 							<p>Runes engraved with {{inspector.target.name}}</p>
 							<!-- {{inspector.relevantRunes[0].str}} -->
 							<div ng-repeat="rune in inspector.relevantRunes" class="inspectorRelevantRune">
-								<p ng-bind-html="rune.setSyntax | html" class="inspectorRelevantRuneStr"></p>
+								<!-- <p ng-bind-html="rune.setSyntax | html" class="inspectorRelevantRuneStr"></p> -->
 								<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="inspectorRelevantRuneImg">
 							</div>
 						</div>

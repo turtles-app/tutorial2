@@ -5,6 +5,7 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.sigils = [];
 	self.stones = [];
 	self.runes = [];
+	self.runicKey = null;
 	self.scroll = [];
 	self.leftSigil = null;
 	self.rightSigil = null;
@@ -50,6 +51,9 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.rune2.groupIndex = 1;
 	self.rune1.setType = 'sigil';
 	self.rune2.setType = 'sigil';
+
+	//Initialize Runic Key
+	// self.runicKey = new Fact(self.ruby.name)
 
 	//Put stones in sigils
 	self.alpha.putIn(self.ruby);
