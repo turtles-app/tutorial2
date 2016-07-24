@@ -174,33 +174,34 @@ var Fact = function (elementName, isIn, setSyntax) {
 	if (!isIn) tmpStr = ' is not in ';
 	this.str = elementName + tmpStr + stringifySyntax(setSyntax);;
 	this.groupIndex;
+	this.setType;
 
 	///////////////////////	
 	// Getter Properties //
 	///////////////////////
 		// Returns type of the Set used to make the Fact
-	Object.defineProperty(that, "setType", {
-		get: function () {
-			var res = "";
-			if (that.simple) {
-				res = "sigil";
-			} else {
-				// If Sigil is compound, check its type
-				switch (setSyntax[1]) {
-					case "u": //Union
-						res = "fuse";
-						break;
-					case "n": //Intersection
-						res = "trim";
-						break;
-					default:
-						res = "sigil";
-						break;
-				}
-			}
-			return res;
-		}
-	});
+	// Object.defineProperty(that, "setType", {
+	// 	get: function () {
+	// 		var res = "";
+	// 		if (that.simple) {
+	// 			res = "sigil";
+	// 		} else {
+	// 			// If Sigil is compound, check its type
+	// 			switch (setSyntax[1]) {
+	// 				case "u": //Union
+	// 					res = "fuse";
+	// 					break;
+	// 				case "n": //Intersection
+	// 					res = "trim";
+	// 					break;
+	// 				default:
+	// 					res = "sigil";
+	// 					break;
+	// 			}
+	// 		}
+	// 		return res;
+	// 	}
+	// });
 
 };
 

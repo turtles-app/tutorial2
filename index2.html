@@ -104,7 +104,6 @@
 			</div>
 			<div ng-controller="runeController as rune"> 
 				<div id="runeTreeContainer" custom-droppable drop-allowed="rune.dropAllowed" on-drop="rune.drop">
-					{{data.selectedRunes.length}}
 					Runic Tree
 					<!-- PLACEHOLDER IMAGE OF SINGLE RUNE -->
 					<!-- <img id="placeholderRune" src="./img/rune-sigil-ruby.png"> -->
@@ -112,11 +111,11 @@
 				</div> <!-- End of Rune Tree -->
 				<div>
 					<p id="selectedRuneText1">
-						Crafting Rune:
+						Selected Rune:
 					</p>
 					<img ng-src="./img/rune-{{rune.selectedRune.setType}}-{{rune.selectedRune.elementName}}.png" id="selectedRune" custom-draggable type="'rune'" index="rune.selectedRune.groupIndex">
-					<p id="selectedRuneText2">
-						{{rune.selectedRune.str}}
+					<p id="selectedRuneText2" ng-bind-html="rune.selectedRune.str | html">
+						<!-- {{rune.selectedRune.str}} -->
 					</p>
 				</div>
 			</div> <!-- End of runeController -->

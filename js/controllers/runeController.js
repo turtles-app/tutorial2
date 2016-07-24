@@ -37,6 +37,7 @@ app.controller("runeController", ["$scope", "$rootScope", function($scope, $root
 		if (valid) {
 			var newRune = new Fact(data.selectedStones[0].name, true, data.selectedSigils[0].equivalents[data.selectedSigils[0].eqActiveIndex]);
 			newRune.groupIndex = data.runes.length;
+			newRune.setType = data.selectedSigils[0].type;
 			data.runes.push(newRune);
 			tmpData = linearRuneTreeData(data.runes);
 			self.treeData = tmpData.data;

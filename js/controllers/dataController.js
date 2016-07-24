@@ -48,6 +48,8 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.rune2 = new Fact(self.topaz.name, true, self.beta.equivalents[0]);
 	self.rune1.groupIndex = 0;
 	self.rune2.groupIndex = 1;
+	self.rune1.setType = 'sigil';
+	self.rune2.setType = 'sigil';
 
 	//Put stones in sigils
 	self.alpha.putIn(self.ruby);
