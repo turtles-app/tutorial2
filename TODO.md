@@ -10,8 +10,10 @@ REQUIRED COMPONENTS
 			-Sigil Composition Tree Positioning
 		-Runes:
 			-Branch?
+		-Runic Key:
+			-Explain requirements on sigil (with img?)
+			-Explain requirements on stone (with img?)
 	- RUNE TREE
-		-Runic Key rendered in tree
 		-Image generation for all possible runes
 	- RUNE CRAFTER
 		-Clear crafter with trashcan (both ways)

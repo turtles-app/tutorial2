@@ -52,8 +52,10 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 	self.rune1.setType = 'sigil';
 	self.rune2.setType = 'sigil';
 
+	self.sigilRequirements = new sigilRequirements(true, [], ["&alpha;",], 'any', null, null);
+	self.stoneRequirements = new stoneRequirements(false, [], []);
 	//Initialize Runic Key
-	// self.runicKey = new Fact(self.ruby.name)
+	self.runicKey = new runicKey(self.sigilRequirements, self.stoneRequirements);
 
 	//Put stones in sigils
 	self.alpha.putIn(self.ruby);

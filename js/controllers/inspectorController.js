@@ -39,6 +39,7 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 			case "stone":
 			case "tool":
 			case "trash":
+			case "runicKey":
 				return true;
 				break;
 			default:
@@ -97,6 +98,13 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				self.target = data.runes[dragData.index];
 				self.content = "RUNE: " + self.target.elementName + " resonates in " + unEscape(self.target.setSyntax) + " ( " + self.target.setSyntax + " )";
 				self.img = "./img/rune-" + self.target.setType + "-" + self.target.elementName + ".png";
+				break;
+			case 'runicKey':
+				self.target  = data.runicKey;
+				self.content = "A Runic Key. Craft a rune that matches its pattern to obtain it!"
+				self.sigilStr = self.target.sigilStr;
+				self.stoneStr = self.target.stoneStr;
+				self.img = "./img/runicKey.png";
 				break;
 			case 'tool':
 				// Handle different tools

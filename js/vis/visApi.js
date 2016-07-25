@@ -85,6 +85,29 @@ var sigilTreeData = function (set, initialLevel, occurances) {
 	return res;
 }
 
+// Returns raw-formatted node from runicKey
+function linearRunicKeyData (nodes) {
+	return {
+		node: {
+			'id' : 1337,
+			'title': 'Runic Key',
+			'shape': 'image',
+			'image': './img/runicKey.png',
+			'level': nodes.length
+		},
+		edge: {
+			'from': nodes[nodes.length -1].id,
+			'to': 1337,
+			'dashes': true,
+			'color': {
+				color: '#484849'
+			}
+
+		}
+
+	}
+}
+
 // Rune Tree Network //
 
 // Returns obj with nodes and edges for Network
@@ -129,9 +152,13 @@ var linearRuneTreeData = function (runes) {
 
 // Selects node from rune tree (called on click)
 var linearFindRuneFromNode = function (nodeId, runes) {
-	var res = null;
+	var res = {runicKey: false, data: null};
+	// Check if user clicked runic key
+	if (nodeId === 1337) return {runicKey: true, data: null};
+	console.log("didn't click runic key");
 	runes.forEach(function (rune) {
-		if (nodeId === rune.groupIndex) res = rune;
+		if (nodeId === rune.groupIndex) res.data = rune;
 	});
+	console.log(res);
 	return res;
 };

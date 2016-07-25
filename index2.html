@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="./js/dependencies/engine/setEngine.js"></script>
 	<script type="text/javascript" src="./js/dependencies/engine/operations.js"></script>
 	<script type="text/javascript" src="./js/dependencies/engine/proofEngine.js"></script>
+	<script type="text/javascript" src="./js/dependencies/engine/runicKeyEngine.js"></script>
 	<!-- app -->
 	<script type="text/javascript" src="./js/app.js"></script>
 	<!-- controllers -->
@@ -113,7 +114,10 @@
 					<p id="selectedRuneText1">
 						Selected Rune:
 					</p>
-					<img ng-src="./img/rune-{{rune.selectedRune.setType}}-{{rune.selectedRune.elementName}}.png" id="selectedRune" custom-draggable type="'rune'" index="rune.selectedRune.groupIndex">
+					<!-- image of selected Rune -->
+					<img ng-src="./img/rune-{{rune.selectedRune.setType}}-{{rune.selectedRune.elementName}}.png" id="selectedRune" custom-draggable type="'rune'" index="rune.selectedRune.groupIndex" ng-if="rune.selectedRune">
+					<!-- image of runic key (if selected) -->
+					<img src="./img/runicKey.png" ng-if="rune.selectedRunicKey" id="selectedRune" custom-draggable type="'runicKey'" index="null">
 					<p id="selectedRuneText2" ng-bind-html="rune.selectedRune.str | html">
 						<!-- {{rune.selectedRune.str}} -->
 					</p>
