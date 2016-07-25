@@ -1,6 +1,3 @@
-
-
-
 REQUIRED COMPONENTS
 	- INSPECTOR
 		-Tools:
@@ -27,9 +24,11 @@ FURTHER ON:
 	- Rework Set Engine
 		- POJO equivalents
 		- Smarter use of getters
+	-Sigil universe - hover over compound sigil to see component sigils
 
 REQUIRED IMAGES
 	- Background ideas
 
 BUGS:
 	- Forge framework image not scaled w/ percentages
+	- Disallow drop of sigils into sigil forges
