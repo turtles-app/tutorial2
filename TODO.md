@@ -8,8 +8,7 @@ REQUIRED COMPONENTS
 		-Runes:
 			-Branch?
 		-Runic Key:
-			-Explain requirements on sigil (with img?)
-			-Explain requirements on stone (with img?)
+			-Handle requirements on component sigils
 	- RUNE TREE
 		-Image generation for all possible runes
 	- RUNE CRAFTER

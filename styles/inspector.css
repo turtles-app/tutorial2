@@ -166,3 +166,43 @@
 	bottom: 37%;
 	left: 30%;
 }
+
+#inspectRunicKey {
+	display: block;
+	position: absolute;
+	left: 53%;
+	bottom: 110%;
+	height: 150%;	
+	width: 100%;
+}
+
+#sigilRequirements {
+	display: block;
+	position: absolute;
+	height: 45%;
+	width: 15%;
+}
+
+#stoneRequirements {
+	display: block;
+	position: absolute;
+	height: 45%;
+	width: 15%;
+	top: 50%;
+}
+
+#runicKeySigil {
+	display: block;
+	position: absolute;
+	height: 30%;
+	top: 15%;
+	left: 2%;
+}
+
+#runicKeyStone {
+	display: block;
+	position: absolute;
+	height: 30%;
+	top: 23%;
+	left: 2%;
+}

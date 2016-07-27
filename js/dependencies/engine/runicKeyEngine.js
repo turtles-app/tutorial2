@@ -47,21 +47,36 @@ function runicKey (sigilRequirements, stoneRequirements, shouldResonate) {
 	switch (stoneRequirements.restricted) {
 		case true:
 			if (stoneRequirements.mustBe.length > 0) {
-				stoneStr = "Either ";
-				stoneRequirements.mustBe.forEach(function (stoneName, index, list) {
+				if (stoneRequirements.mustBe.length === 1) {
+					stoneStr = "Must be " + stoneRequirements.mustBe[0];
+				} else {
+					stoneStr = "Must be either ";
+					stoneRequirements.mustBe.forEach(function (stoneName, index, list) {
+						if (index < list.length - 1) {
+							stoneStr = stoneStr + stoneName + ", ";
+						} else {
+							stoneStr = stoneStr + "or " + stoneName;
+						}
+					});
+				}
+			} else if (stoneRequirements.mustNotBe.length > 0) {
+				stoneStr = "Must be any stone EXCEPT: ";
+				stoneRequirements.mustNotBe.forEach(function (stone, index, list) {
 					if (index < list.length - 1) {
-						stoneStr = stoneStr + stoneName + ", ";
+						stoneStr = stoneStr + stone + ", ";
 					} else {
-						stoneStr = stoneStr + "or " + stoneName;
+						if (list.length === 1) {
+							stoneStr += stone;
+						} else {
+							stoneStr = stoneStr + "or " + stone;
+						}
 					}
 				});
-			} else if (stoneRequirements.mustNotBe.length > 0) {
-
 			}
 
 			break;
 		case false:
-			stoneStrHead = "Any stone"
+			stoneStr = "Can be any stone";
 			break;
 	}
 	this.stoneStr = stoneStr;
@@ -71,32 +86,55 @@ function runicKey (sigilRequirements, stoneRequirements, shouldResonate) {
 		case true:
 			// Check which sigils are required
 			if (sigilRequirements.mustBe.length > 0) {
-				sigilStr = "Either ";
-				sigilRequirements.mustBe.forEach(function (syntax, index, list) {
-					if (index < list.length - 1) {
-						sigilStr = sigilStr + stringifySyntax(syntax) + ", ";
-					} else {
-						sigilStr = sigilStr + "or " + stringifySyntax(syntax);
-					}
-				});
-			// Check which sigils are disallowed
-			} else if (sigilRequirements.mustNotBe.length > 0) {
-				sigilStr += "Any Sigil EXCEPT: ";
-				sigilRequirements.mustNotBe.forEach(function (syntax, index, list) {
-					if (index < list.length - 1) {
-						sigilStr = sigilStr + stringifySyntax(syntax) + ", "
-					} else {
-						if (list.length === 1) {
-							sigilStr += stringifySyntax(syntax);
+				if (sigilRequirements.mustBe.length === 1) {
+					sigilStr = "Must be " + sigilRequirements.mustBe[0];
+				} else {
+					sigilStr = "Must be either ";
+					sigilRequirements.mustBe.forEach(function (syntax, index, list) {
+						if (index < list.length - 1) {
+							sigilStr = sigilStr + stringifySyntax(syntax) + ", ";
 						} else {
 							sigilStr = sigilStr + "or " + stringifySyntax(syntax);
 						}
+					});
+				}
+			// Check which sigils are disallowed
+			} else {
+				sigilStr = "Must be any "
+				if (sigilRequirements.requiredType) {
+					switch (sigilRequirements.requiredType) {
+						case 'sigil':
+							sigilStr += "simple ";
+							break;
+						case 'fuse':
+							sigilStr += "fused ";
+							break;
+						case 'trim':
+							sigilStr += "trimmed ";
+							break;
+						case 'core':
+							sigilStr += "cored ";
+							break;
 					}
-				});
+				}
+				if (sigilRequirements.mustNotBe.length > 0) {
+					sigilStr += "Sigil EXCEPT: ";
+					sigilRequirements.mustNotBe.forEach(function (syntax, index, list) {
+						if (index < list.length - 1) {
+							sigilStr = sigilStr + stringifySyntax(syntax) + ", "
+						} else {
+							if (list.length === 1) {
+								sigilStr += stringifySyntax(syntax);
+							} else {
+								sigilStr = sigilStr + "or " + stringifySyntax(syntax);
+							}
+						}
+					});
+				}
 			}
 			break;
 		case false:
-			sigilStr = "Any sigil";
+			sigilStr = "Can be any sigil";
 			break;
 	}
 	this.sigilStr = sigilStr;
