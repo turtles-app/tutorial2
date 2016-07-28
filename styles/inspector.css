@@ -196,13 +196,13 @@
 	position: absolute;
 	height: 30%;
 	top: 15%;
-	left: 2%;
+	left: .35%;
 }
 
 #runicKeyStone {
 	display: block;
 	position: absolute;
 	height: 30%;
-	top: 23%;
+	top: 65%;
 	left: 2%;
 }
