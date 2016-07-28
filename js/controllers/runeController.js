@@ -53,19 +53,37 @@ app.controller("runeController", ["$scope", "$rootScope", function($scope, $root
 			newRune.groupIndex = data.runes.length;
 			newRune.setType = data.selectedSigils[0].type;
 			data.runes.push(newRune);
-
-			// Check if new rune matches Runic Key
-			var wasKey = compareRuneToKey(newRune, data.runicKey);
-
-
-			// Redraw Network
+			// Network Data (without final node)
 			tmpData = linearRuneTreeData(data.runes);
 			self.treeData = tmpData.data;
 			self.rawData = tmpData.rawData;
+
+			// Check if new rune matches Runic Key
+			var wasKey = compareRuneToKey(newRune, data.runicKey);
+			console.log(wasKey);
+			// VICTORY
+			if (wasKey) {
+				var completeKeyData = linearCompleteKeyData(self.rawData.nodes);
+				self.rawData.nodes.push(completeKeyData.node);
+				self.rawData.edges.push(completeKeyData.edge);
+				self.network.setOptions(
+					{
+						edges: {
+							color: {
+								color: "#ffff00"
+							}
+						}
+					}
+				) //end setOptions
+			} else {
+				
 				// Add runic key to end of network
 			var runicKeyData = linearRunicKeyData(self.rawData.nodes);
 			self.rawData.nodes.push(runicKeyData.node);
 			self.rawData.edges.push(runicKeyData.edge);
+			}
+
+
 			self.network.setData(self.rawData);			
 		}
 		data.selectedRunes = [];

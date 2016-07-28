@@ -164,7 +164,7 @@ function compareSigilToReqs (setSyntax, setType, sigilReqs) {
 		}
 		// Check requirements on sigil type
 		var passType = false;
-		if (sigilReqs.requiredType != 'any') {
+		if (sigilReqs.requiredType != null) {
 			if (sigilReqs.requiredType === setType) {
 				passType = true;
 			}
@@ -227,6 +227,15 @@ function compareSigilToReqs (setSyntax, setType, sigilReqs) {
 		} else {
 			passSecondComponentReqs = true;
 		}
+		// console.log("runeKey Sigil Check:");
+		// console.log({
+		// 	passMustBe: passMustBe,
+		// 	passMustNotBe: passMustNotBe,
+		// 	passType: passType,
+		// 	// passSigilReqs: passSigilReqs
+		// 	passFirstComponentReqs: passFirstComponentReqs,
+		// 	passSecondComponentReqs: passSecondComponentReqs,
+		// })
 		if (passMustBe && passMustNotBe && passType && passFirstComponentReqs && passSecondComponentReqs) {
 			res = true;
 		}
@@ -248,6 +257,11 @@ function compareStoneToReqs (stoneName, stoneReqs) {
 			passMustNotBe = false;
 		}
 		res = passMustBe && passMustNotBe;
+		// console.log("stone reqs");
+		// console.log({
+		// 	passMustNotBe: passMustNotBe,
+		// 	passMustBe: passMustBe
+		// })
 	} else {
 		res = true;
 	}
@@ -260,5 +274,10 @@ function compareRuneToKey (rune, runicKey) {
 	var passSigilReqs = compareSigilToReqs(rune.setSyntax, rune.setType, runicKey.sigilRequirements);
 	var passStoneReqs = compareStoneToReqs(rune.elementName, runicKey.stoneRequirements);
 	res = passSigilReqs && passStoneReqs;
+	console.log("runeKey check:");
+	console.log({
+		passSigilReqs: passSigilReqs,
+		passStoneReqs: passStoneReqs
+	});
 	return res;
 }

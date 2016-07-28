@@ -106,7 +106,25 @@ function linearRunicKeyData (nodes) {
 		}
 
 	}
-}
+};
+
+// Returns raw-formatted node for completed runicKey
+function linearCompleteKeyData (nodes) {
+	return {
+		node: {
+			'id' : 1337,
+			'title': 'Crafted Runic Key',
+			'shape': 'image',
+			'image': './img/completeKey-sigil.png',
+			'level': nodes.length
+		},
+		edge: {
+			'from': nodes[nodes.length -1].id,
+			'to': 1337,
+		}
+	}
+};
+
 
 // Rune Tree Network //
 
@@ -155,10 +173,8 @@ var linearFindRuneFromNode = function (nodeId, runes) {
 	var res = {runicKey: false, data: null};
 	// Check if user clicked runic key
 	if (nodeId === 1337) return {runicKey: true, data: null};
-	console.log("didn't click runic key");
 	runes.forEach(function (rune) {
 		if (nodeId === rune.groupIndex) res.data = rune;
 	});
-	console.log(res);
 	return res;
 };
