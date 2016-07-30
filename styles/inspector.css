@@ -140,7 +140,9 @@
 	#inspectedSigilStr {
 		display: block;
 		position: absolute;
-		top: 15%;
+		/*top: 15%;*/
+		bottom: 96%;
+		font-weight: bold;
 		left: 14.25%;		
 	}
 

@@ -10,16 +10,30 @@
 	position: relative;
 	display: inline-block;
 	width: 20%;
+	margin-bottom: 15%;
+	margin-left: 2%;
 }
 
 .sigilStr {
 	position: absolute;
-	top: 4%;
+	/*top: 4%;*/
+	bottom: 77%;
 	left: 48%;
+	font-weight: bold;
 }
 
 #sigilDropZone {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+}
+
+.sigilLongName {
+	display: none;
+	position: absolute;
+	left: 40%;
+}
+
+.sigil:hover + .sigilLongName{
+	display: block;
 }

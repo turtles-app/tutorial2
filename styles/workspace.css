@@ -153,8 +153,8 @@
 #crafterStr {
 	display: inline-block;
 	position: absolute;
-	left: 40%;
-	top: 23%;
+	left: 37%;
+	top: 88%;
 }
 
 .crafterJustification {
@@ -178,7 +178,7 @@
 	position: absolute;
 	height: 130%;
 	left: 15%;
-	top: -15%;
+	top: -25%;
 }
 
 #crafterSigilLongName {
@@ -192,7 +192,7 @@
 	display: block;
 	position: absolute;
 	left: 45%;
-	top: 70%;
+	top: 55%;
 }
 
 #crafterSigilShortName {
@@ -200,4 +200,12 @@
 	position: absolute;
 	left: 50.25%;
 	top: 30%;
+	font-weight: bold;
+}
+
+#crafterSigilShortName2 {
+	display: block;
+	position: absolute;
+	left: 50.25%;
+	top: 20%;
 }
