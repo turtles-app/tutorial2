@@ -1,7 +1,7 @@
 
 //Returns the union of two sets (another set) with the given name
 var union = function(name, x, y) {
-	var unionSyntax = [x.equivalents[x.eqActiveIndex], 'U', y.equivalents[y.eqActiveIndex]];
+	var unionSyntax = [x.equivalents[x.eqActiveIndex], 'u', y.equivalents[y.eqActiveIndex]];
 	var res = new Set("union", name, unionSyntax);
 	res.type = "fuse";
 	res.simple = false;

@@ -5,11 +5,14 @@
 	<!-- dependencies -->
 	<script type="text/javascript" src="./js/dependencies/node_modules/angular/angular.js"></script>
 	<script type="text/javascript" src="./js/dependencies/node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+	<script type="text/javascript" src="./js/dependencies/lodash.min.js"></script>
+	<script type="text/javascript" src="./js/dependencies/node_modules/vis/dist/vis.js"></script>
 
 	<!-- set engine -->
 	<script type="text/javascript" src="./js/dependencies/engine/setEngine.js"></script>
 	<script type="text/javascript" src="./js/dependencies/engine/operations.js"></script>
 	<script type="text/javascript" src="./js/dependencies/engine/proofEngine.js"></script>
+	<script type="text/javascript" src="./js/dependencies/engine/runicKeyEngine.js"></script>
 	<!-- app -->
 	<script type="text/javascript" src="./js/app.js"></script>
 	<!-- controllers -->
@@ -17,63 +20,185 @@
 	<script type="text/javascript" src="./js/controllers/runeController.js"></script>
 	<script type="text/javascript" src="./js/controllers/stoneController.js"></script>
 	<script type="text/javascript" src="./js/controllers/sigilController.js"></script>
-	<!--  <script type="text/javascript" src="./js/controllers/scrollController.js"></script> -->
-	<script type="text/javascript" src="./js/controllers/machineController.js"></script>
+	<script type="text/javascript" src="./js/controllers/toolController.js"></script>
+	<script type="text/javascript" src="./js/controllers/workspaceController.js"></script>
+	<script type="text/javascript" src="./js/controllers/inspectorController.js"></script>
+	
+	<!-- directives -->
+	<script type="text/javascript" src="./js/directives/bothable.js"></script>
+	<script type="text/javascript" src="./js/directives/draggable.js"></script>
+	<script type="text/javascript" src="./js/directives/droppable.js"></script>
+
 
 	<!-- styles -->
 	<link rel="stylesheet" type="text/css" href="./styles/angular-toastr.css">
-	<link rel="stylesheet" type="text/css" href="./styles/styles.css">
+	<link rel="stylesheet" type="text/css" href="./styles/styles2.css">
 	<link rel="stylesheet" type="text/css" href="./styles/flashing.css">
+	<link rel="stylesheet" type="text/css" href="./styles/stoneSpace.css">
+	<link rel="stylesheet" type="text/css" href="./styles/toolbox.css">
+	<link rel="stylesheet" type="text/css" href="./styles/sigilSpace.css">
+	<link rel="stylesheet" type="text/css" href="./styles/inspector.css">
+	<link rel="stylesheet" type="text/css" href="./styles/workspace.css">
+	<link rel="stylesheet" type="text/css" href="./styles/runeSpace.css">
+	<!-- vis.js styles: -->
+	<link rel="stylesheet" type="text/css" href="./js/dependencies/node_modules/vis/dist/vis.css">
 
 </head>
-<body ng-app = "app">
-	<div ng-controller = "dataController as data">
-		<div id="topWrap" class="wrap">
-			<div id="scroll">
-			Scroll of Wisdom
-				<div id="runes" ng-controller="runeController as runes" ng-class="{'flashing': runes.flashing}">
-				
-					<div ng-repeat="rune in data.runes track by $index" ng-class="{'flashing': runes.flashingRunes.indexOf(rune) >= 0}">
-						<span ng-bind-html="rune.str | html"></span>
+<body ng-app="app">
+	<div ng-controller="dataController as data">
+		<div id="topWrap">
+			<div id="bookWrap">
+				<div id="spacesWrap">
+					<div id="stonesSpace">
+						<img ng-repeat="stone in data.stones" ng-src="./img/{{stone.name}}.png" class="stone" class="tool" custom-draggable index="$index" type="'stone'"></img>
 					</div>
-				</div> <!-- End of runesController -->
-				<div ng-repeat="scroll in data.scroll track by $index"></div>
-			</div> <!-- End of scroll -->
-		</div> <!-- End of topWrap -->
-	
-		<div id="bottomWrap" class="wrap">
-			<div id="stoneSigilWrap">
-				<div id="stones" ng-controller="stoneController as stones" ng-class="{'flashing': stones.flashing}">
-				Stones of Knowledge
-					<div ng-repeat="stone in data.stones track by $index" class="stone" ng-class="{'flashing': stones.flashingStones.indexOf(stone) >= 0}" >
-						<img class="stoneImg" ng-src="./img/hex-{{stone.color}}.png">
+					<div id="sigilsSpace" ng-controller="sigilController as sigil">
+						<div id="sigilDropZone" custom-droppable drop-allowed="sigil.dropAllowed" on-drop="sigil.drop">
+							<div ng-repeat="sigil in data.sigils" class="sigilWrap">
+								<p ng-bind-html="sigil.strEquivalents[sigil.eqActiveIndex] | html" class="sigilStr"></p>
+								<img  ng-src="./img/{{sigil.type}}.png" class="sigil"custom-draggable index="$index" type="'sigil'">
+							</div>
+						</div>
 					</div>
-				</div> <!-- End of stoneController -->
-				<div id="sigils" ng-controller="sigilController as sigils" ng-class="{'flashing': sigils.flashing}">
-				Sigils of Understanding
-					<div ng-repeat="sigil in data.sigils track by $index" class="sigil" ng-class="{'flashing': sigils.flashingSigils.indexOf(sigil) >= 0}">
-						<span ng-bind-html="sigil.equivalents[sigil.eqActiveIndex] | html"></span> <!-- Sigil's current name -->
-						<img ng-src="./img/square-{{sigil.color}}.png"> <!-- Sigil's img -->
-					</div> <!-- End of a sigil -->
-				</div> <!-- End of sigilController -->
-			</div> <!-- End of stoneSigilWrap -->
-			
-			<div id="machine" ng-controller="machineController as machine">
-			The Machine
-				<div id="tabs"> <!-- Operations tab bar -->
-					<div ng-repeat="operation in machine.numberOfOperations" class="machineTab">{{operation}}</div> <!-- Operation Tab -->
-				</div> <!-- End of tabs -->
-				<div id="zones">
-					<div id="dropZone">
-					Drop Here
-					</div> <!-- End of dropZone -->
-					<div id="activeZone">
-					Act here	
-					</div> <!-- End of activeZone -->
 				</div>
-			</div> <!-- End of machine -->
-		</div> <!-- End of bottomWrap -->
-	</div> <!-- End of dataController-->
+			<div id="workspace" ng-controller="workspaceController as workspace" >
+				<div id="workspaceDropZoneWrap">
+					<div custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop"  id="workspaceActiveToolWrap" >
+						<img custom-draggable index="null" type="'selectedTool'" id="workspaceActiveToolImg" ng-src="./img/{{workspace.tool}}.png" ng-if="workspace.tool != null">
+					</div>
+					<!-- Forge workspace -->
+					<div ng-if="workspace.tool ==='forge'">
+						<div id="forgeDropZone"  custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop" > 
+							<img src="./img/sigil.png" custom-draggable type="'forgeSigil'" index="null">
+						</div>
+					</div>
+					<!-- Fuser workspace -->
+					<div ng-if="workspace.tool ==='fuser'">
+						<div class="fuserDropZoneContainer" custom-draggable index="null" type="'fusedSigil'" >
+							<div id="leftFuserDrop" custom-droppable drop-allowed="workspace.isSigil" on-drop="workspace.dropLeftSigil" ng-if="!data.leftSigil"></div>
+							<div id="rightFuserDrop" custom-droppable drop-allowed="workspace.isSigil" on-drop="workspace.dropRightSigil" ng-if="!data.rightSigil"></div>
+						</div>
+						<img ng-if="data.leftSigil!=null && data.rightSigil!=null" src="./img/fuse.png" class="fuserDropZoneContainer" custom-draggable index="null" type="'fusedSigil'" id="fuserDropImg">
+							<span id="leftFuserSigil" ng-if="data.leftSigil" ng-bind-html="data.leftSigil.equivalents[data.leftSigil.eqActiveIndex] | html"></span>
+							<span id="rightFuserSigil" ng-if="data.rightSigil" ng-bind-html="data.rightSigil.equivalents[data.rightSigil.eqActiveIndex] | html"></span>
+					</div>
+					<!-- Rune Crafter Workspace -->
+					<div ng-if="workspace.tool ==='crafter'" custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop" >
+						<!-- Outlines -->
+						<div id="runeOutline" ng-show="data.selectedSigils.length === 0 || data.selectedStones.length === 0"></div>
+						<div id="sigilOutline" ng-show="data.selectedSigils.length === 0"></div>
+						<div id="stoneOutline" ng-show="data.selectedStones.length === 0"></div>
+						<!-- Selected Components -->
+						<img ng-show="data.selectedStones.length > 0 && data.selectedSigils.length === 0" ng-src="./img/{{data.selectedStones[0].name}}.png" id="crafterStone"></img>
+						<img ng-show="data.selectedSigils.length > 0 && data.selectedStones.length === 0" ng-src="./img/{{data.selectedSigils[0].type}}.png" id="crafterSigil">
+						<p ng-show="data.selectedStones.length > 0 && data.selectedSigils.length > 0" ng-bind-html="data.selectedStones[0].name + ' resonates in ' + data.selectedSigils[0].equivalents[data.selectedSigils[0].eqActiveIndex] | html" id="crafterStr"></p>
+						<div ng-repeat="rune in data.selectedRunes" class="crafterJustification">
+							<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="justification-img">
+						</div>
+						<!-- Final Image of Rune -->
+						<img ng-show="data.selectedSigils.length > 0 && data.selectedStones.length > 0" ng-src="./img/rune-{{data.selectedSigils[0].type}}-{{data.selectedStones[0].name}}.png" id="crafterResult" custom-draggable type="'crafterResult'" index="null">
+					</div>
+				</div>
+				<div ng-if="workspace.tool ==='forge'" id="forgeStones">
+					<img class="forgeStones" ng-repeat="stone in data.selectedStones" ng-src="./img/{{stone.name}}.png">
+				</div>
+			</div>
+			<div ng-controller="runeController as rune"> 
+				<div id="runeTreeContainer" custom-droppable drop-allowed="rune.dropAllowed" on-drop="rune.drop">
+					Runic Tree
+					<!-- PLACEHOLDER IMAGE OF SINGLE RUNE -->
+					<!-- <img id="placeholderRune" src="./img/rune-sigil-ruby.png"> -->
+					<!-- <img id="placeholderRune" ng-repeat="rune in data.runes" ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png"> -->
+				</div> <!-- End of Rune Tree -->
+				<div>
+					<p id="selectedRuneText1">
+						Selected Rune:
+					</p>
+					<!-- image of selected Rune -->
+					<img ng-src="./img/rune-{{rune.selectedRune.setType}}-{{rune.selectedRune.elementName}}.png" id="selectedRune" custom-draggable type="'rune'" index="rune.selectedRune.groupIndex" ng-if="rune.selectedRune">
+					<!-- image of runic key (if selected) -->
+					<img src="./img/runicKey.png" ng-if="rune.selectedRunicKey" id="selectedRune" custom-draggable type="'runicKey'" index="null">
+					<p id="selectedRuneText2" ng-bind-html="rune.selectedRune.str | html">
+						<!-- {{rune.selectedRune.str}} -->
+					</p>
+				</div>
+			</div> <!-- End of runeController -->
+			</div> 
 
+		</div>
+		<div id="toolsWrap" ng-controller="toolController as toolbox"> 
+			<img ng-repeat="tool in data.tools" class="tool" ng-src="./img/{{tool}}.png"custom-draggable type="'tool'" index="$index">
+			<img ng-src="./img/trash.png" class="tool" id="trashCan" custom-bothable type="'trash'" index="null" drop-allowed="toolbox.trashAllowed" on-drop="toolbox.trashDrop" >
+		</div>
+		<div id="bottomWrap" ng-controller="inspectorController as inspector">
+			<!-- Image of Inspected Set -->
+			<div ng-if="inspector.targetType==='sigil'" id="inspectedSigilWrap">
+				<p ng-bind-html="inspector.target.strEquivalents[inspector.target.eqActiveIndex] | html" id="inspectedSigilStr"></p>
+				<img  ng-src="./img/{{inspector.target.type}}.png" class="inspectedSigil"custom-draggable index="$index" type="'sigil'">		
+			</div>
+			<div id="inspectorWrap" >
+				<div id="inspector" custom-droppable drop-allowed="inspector.dropAllowed" on-drop="inspector.drop">
+					Inspector
+					<div id="inspectorContainer" ng-show="inspector.targetType==='sigil'"></div>
+				</div>
+				<img ng-if="inspector.img!=''" ng-src="{{inspector.img}}" class="inspectedTool">
+				<div id="inspectorTextLine">
+					<p ng-bind-html="inspector.content | html">
+					<!-- {{inspector.content}} -->
+					</p>
+					<!-- INSPECTING A SIGIL -->
+					<div ng-show="inspector.targetType==='sigil'">
+						<!-- Related Stones -->
+						<p>Known Resonant Stones</p>
+						<img ng-repeat="stone in inspector.resonantStones" ng-src="./img/{{stone.name}}.png" class="inspectorResonantStone">
+						<!-- Related Runes -->
+						<div id="inspectSigil-runes">
+							<div id="inspectSigil-runeText">Runes inscribed with 
+								<p ng-bind-html="inspector.target.equivalents[inspector.target.eqActiveIndex] | html" id="inspectSigil-runeSigilName"></p>
+								<!-- {{inspector.target.equivalents[inspector.target.eqActiveIndex]}} -->
+							</div>
+							<!-- {{inspector.relevantRunes[0].str}} -->
+							<div ng-repeat="rune in inspector.relevantRunes" class="inspectorRelevantRune">
+								<!-- <p ng-bind-html="rune.setSyntax | html" class="inspectorRelevantRuneStr"></p> -->
+								<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="inspectorRelevantRuneImg">
+							</div>
+						</div>						
+					</div>
+					<div ng-show="inspector.targetType === 'stone'">
+						<div id="inspectStone-sigils">
+							<p>Known Resonant Sigils</p>
+							<div ng-repeat="sigil in inspector.resonantSigils" class="inspectorResonantSigil">
+								<p ng-bind-html="sigil.strEquivalents[sigil.eqActiveIndex] | html" class="inspectorResonantSigilStr"></p>
+								<img  ng-src="./img/{{sigil.type}}.png" class="inspectorResonantSigilImg">
+							</div>
+						</div>
+						<div id="inspectStone-runes">
+							<p>Runes engraved with {{inspector.target.name}}</p>
+							<!-- {{inspector.relevantRunes[0].str}} -->
+							<div ng-repeat="rune in inspector.relevantRunes" class="inspectorRelevantRune">
+								<!-- <p ng-bind-html="rune.setSyntax | html" class="inspectorRelevantRuneStr"></p> -->
+								<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="inspectorRelevantRuneImg">
+							</div>
+						</div>
+
+
+					</div>
+					<div ng-show="inspector.targetType === 'rune'">
+						<p>Inscribed with Sigil: </p>
+						<img ng-src="./img/{{inspector.target.setType}}.png" id="inscribedSigil">
+						<p id="engravedText">Engraved with Stone:</p>
+						<img ng-src="./img/{{inspector.target.elementName}}.png" id="engravedStone">
+					</div>
+					<div ng-show="inspector.targetType === 'runicKey'" id="inspectRunicKey">
+						<div id="sigilRequirements" ng-bind-html="data.runicKey.sigilStr | html"></div>
+						<div id="stoneRequirements" ng-bind-html="data.runicKey.stoneStr | html"></div>
+						<img id="runicKeySigil"src="./img/runicKeySigil.png">
+						<img id="runicKeyStone"src="./img/runicKeyStone.png">
+					</div>
+				</div>
+				<!-- vis.js configurations -->
+				<script type="text/javascript" src="./js/vis/visApi.js"></script>
+			</div>
+		</div> <!-- End bottomWrap -->
+	</div>  <!-- End dataController -->
 </body>
-</html>

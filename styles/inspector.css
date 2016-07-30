@@ -50,6 +50,13 @@
 
 }
 
+#inspectorSigilLongName {
+	display: block;
+	position: absolute;
+	bottom: 110%;
+	left: 9.55%;
+
+}
 #inspectSigil-runeText {
 	display: inline;
 	position: relative;
@@ -127,13 +134,13 @@
 		position: absolute;
 		width: 15%;
 		left: 7%;
-		top: 5%;
+		/*top: 5%;*/
 
 	}
 	#inspectedSigilStr {
 		display: block;
 		position: absolute;
-		top: 19%;
+		top: 15%;
 		left: 14.25%;		
 	}
 

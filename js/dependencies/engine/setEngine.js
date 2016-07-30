@@ -1,4 +1,5 @@
 var Set = function (groupName, name, firstEquivalence) {
+	var that = this;
 	// All sets exist within named array within the universe object 
 	// (which is instantiated on the front end)
 	this.groupName = groupName;
@@ -13,12 +14,28 @@ var Set = function (groupName, name, firstEquivalence) {
 	if (firstEquivalence) {
 		//Add that operation's syntax (array) representation to the set's equivalents
 		this.equivalents.push(firstEquivalence);
+		this.strEquivalents.push(stringifySyntax(firstEquivalence));
 	}
 	this.type = "sigil";
 	this.simple = true;
 	this.eqActiveIndex = 0;
 	this.isSet = true;
 	this.components = [];
+
+	///////////////////////
+	// Getter Properties //
+	///////////////////////
+		// Returns stringified version of operational syntax (A u B)
+	// Object.defineProperty(that, "longName", {
+	// 	get: function () {
+	// 		var res = "";
+	// 		if (that.simple) {
+	// 			res = "that.strEquivalents[0]";
+	// 		} else {
+	// 			res = ""
+	// 		}
+	// 	}
+	// })
 };
 
 		//////////////////////

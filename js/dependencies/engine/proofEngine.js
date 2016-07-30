@@ -20,6 +20,7 @@ var inAtomic = function(eName, setName, facts) {
 						}
 						break;
 					case 'U':
+					case 'u':
 						sameFacts.forEach(function(f, i) {
 							if (fact.setSyntax[0] === setName) {
 								if (!f.isIn && _.isEqual(f.setSyntax, fact.setSyntax[2]) ) {
@@ -120,6 +121,7 @@ var contains = function(eName, syntax, facts) {
 			//Return true or false, based on inFirst, inSecond, and the set operator (syntax[1])
 			switch (syntax[1]) {
 				case 'U': //Definition of Union operator
+				case 'u':
 					return inFirst || inSecond;
 					break;
 				case 'n': //Definition of Intersect operator

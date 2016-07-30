@@ -81,10 +81,12 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 					edges: edges
 				};
 				var str = unEscape(self.target.equivalents[self.target.eqActiveIndex]);
+				str = str.charAt(0).toUpperCase() + str.slice(1);
 				if (!self.target.simple) { 
 					var tmp = self.target.type;
 					if (self.target.type === 'fuse') tmp += "d";
 					tmp = tmp.charAt(0).toUpperCase() + tmp.slice(1);
+					str += " ( " + self.target.strEquivalents[0] + " )";
 					self.content = tmp + " SIGIL: " + str;
 				} else {
 					self.content = "SIGIL: " + str;

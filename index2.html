@@ -95,8 +95,11 @@
 						<div ng-repeat="rune in data.selectedRunes" class="crafterJustification">
 							<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="justification-img">
 						</div>
+						<p ng-show="data.selectedSigils.length > 0 && data.selectedStones.length === 0" ng-bind-html="data.selectedSigils[0].strEquivalents[data.selectedSigils[0].strEquivalents.length -1] | html" id="crafterSigilLongName"></p>
+						<p ng-show="data.selectedSigils.length > 0 && data.selectedStones.length === 0" ng-bind-html="data.selectedSigils[0].strEquivalents[0] | html" id="crafterSigilShortName"></p>
 						<!-- Final Image of Rune -->
 						<img ng-show="data.selectedSigils.length > 0 && data.selectedStones.length > 0" ng-src="./img/rune-{{data.selectedSigils[0].type}}-{{data.selectedStones[0].name}}.png" id="crafterResult" custom-draggable type="'crafterResult'" index="null">
+						<p ng-show="data.selectedSigils.length > 0 && data.selectedStones.length > 0" ng-bind-html="data.selectedSigils[0].strEquivalents[data.selectedSigils[0].strEquivalents.length -1] | html" id="crafterSigilLongName2"></p>
 					</div>
 				</div>
 				<div ng-if="workspace.tool ==='forge'" id="forgeStones">
@@ -162,7 +165,8 @@
 								<!-- <p ng-bind-html="rune.setSyntax | html" class="inspectorRelevantRuneStr"></p> -->
 								<img ng-src="./img/rune-{{rune.setType}}-{{rune.elementName}}.png" class="inspectorRelevantRuneImg">
 							</div>
-						</div>						
+						</div>	
+						<p ng-show="!inspector.target.simple" ng-bind-html="inspector.target.strEquivalents[1] | html" id="inspectorSigilLongName"></p>					
 					</div>
 					<div ng-show="inspector.targetType === 'stone'">
 						<div id="inspectStone-sigils">
