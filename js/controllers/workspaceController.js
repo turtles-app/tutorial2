@@ -58,9 +58,10 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 
 			case "stone":
 				if (self.tool === "crafter") {
-					var newStone = data.stones.splice(dragData.index, 1)[0];
-					data.stones = data.stones.concat(data.selectedStones);
-					data.stones.sort(sortGroup);
+					var newStone = data.stones[dragData.index]
+					// var newStone = data.stones.splice(dragData.index, 1)[0];
+					// data.stones = data.stones.concat(data.selectedStones);
+					// data.stones.sort(sortGroup);
 					data.selectedStones = [newStone];
 				} else {
 					data.selectedStones.push(data.stones.splice(dragData.index, 1)[0]);
@@ -68,9 +69,10 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 				break;
 			case "sigil":
 				if (self.tool === "crafter") {
-					var newSigil = data.sigils.splice(dragData.index, 1)[0];
-					data.sigils = data.sigils.concat(data.selectedSigils);
-					data.sigils.sort(sortGroup);
+					var newSigil = data.sigils[dragData.index];				
+					// var newSigil = data.sigils.splice(dragData.index, 1)[0];
+					// data.sigils = data.sigils.concat(data.selectedSigils);
+					// data.sigils.sort(sortGroup);
 					data.selectedSigils = [newSigil];
 				} else {
 
@@ -103,10 +105,14 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 		$scope.$apply();
 	};
 
+	// event fired by toolController
 	$rootScope.$on('trashDrop', function(ev, data){
 		switch(data.type){
 			case "fusedSigil":
 			case "forgeSigil":
+			case "crafterResult":
+			case "runeOutline":
+				// notify dataController
 				$rootScope.$broadcast("clearWorkspace");
 				break;
 			case "selectedTool":

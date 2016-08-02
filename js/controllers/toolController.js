@@ -9,7 +9,12 @@ app.controller("toolController", ['$rootScope', '$scope', function($rootScope, $
 			case "selectedTool":
 			case "fusedSigil":
 			case "forgeSigil":
+			case "crafterResult":
+			case "runeOutline":
 				return true;
+				break;
+			default: 
+				return false;
 				break;
 		}
 	};

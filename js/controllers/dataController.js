@@ -1,4 +1,4 @@
-app.controller("dataController", ['$rootScope', function($rootScope){
+app.controller("dataController", ['$rootScope', "$scope", function($rootScope, $scope){
 	var self = this;
 
 	self.steps = 0;
@@ -123,15 +123,21 @@ app.controller("dataController", ['$rootScope', function($rootScope){
 //recieve broadcast from the workspace controller upon trashing selected tool
 	$rootScope.$on('trashTool', function (ev, data){ 
 		self.tools.push(data.tool);
-		self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
-		self.stones.sort(sortGroup);		
+		self.selectedStones = [];
+		self.selectedSigils = [];
+		console.log("tool trashed");
+		$scope.$apply();
+		// self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
+		// self.stones.sort(sortGroup);		
 	});
 
 	// clear workspace after trashing, or creating new sigil
 	$rootScope.$on("clearWorkspace", function (ev, data) {
 		self.leftSigil = null;
 		self.rightSigil = null;
-		self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
-		self.stones.sort(sortGroup);
+		self.selectedSigils = [];
+		self.selectedStones = [];
+		// self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
+		// self.stones.sort(sortGroup);
 	});
 }]);

@@ -86,7 +86,7 @@
 					<!-- Rune Crafter Workspace -->
 					<div ng-if="workspace.tool ==='crafter'" custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop" >
 						<!-- Outlines -->
-						<img ng-hide="data.selectedSigils.length > 0 && data.selectedStones.length > 0" id="runeOutline" custom-draggable src="./img/rune-outline.png">
+						<img ng-hide="data.selectedSigils.length > 0 && data.selectedStones.length > 0" id="runeOutline" custom-draggable index="null" type="'runeOutline'" src="./img/rune-outline.png">
 						<!-- Selected Components -->
 						<img ng-show="data.selectedStones.length > 0 && data.selectedSigils.length === 0" ng-src="./img/{{data.selectedStones[0].name}}.png" id="crafterStone"></img>
 						<img ng-show="data.selectedSigils.length > 0 && data.selectedStones.length === 0" ng-src="./img/{{data.selectedSigils[0].type}}.png" id="crafterSigil">
