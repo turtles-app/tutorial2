@@ -32,6 +32,37 @@ app.controller("runeController", ["$scope", "$rootScope", function($scope, $root
 
 
 
+	self.updateNetwork = function () {
+		var tmpData = linearRuneTreeData(data.runes);
+		self.treeData = tmpData.data;
+		self.rawData = tmpData.rawData;
+
+		// Check if this rune was runicKey
+		var wasKey = compareRuneToKey(data.runes[data.runes.length - 1], data.runicKey);
+		// VICTORY
+		if (wasKey) {
+			var completeKeyData = linearCompleteKeyData(self.rawData.nodes);
+			self.rawData.nodes.push(completeKeyData.node);
+			self.rawData.edges.push(completeKeyData.edge);
+			self.network.setOptions(
+				{
+					edges: {
+						color: {
+							color: "#ffff00"
+						}
+					}
+				}
+			) //end setOptions
+		} else {
+			// Add runicKey to end of network
+			var runicKeyData = linearRunicKeyData(self.rawData.nodes);
+			self.rawData.nodes.push(runicKeyData.node);
+			self.rawData.edges.push(runicKeyData.edge);
+		}
+		self.network.setData(self.rawData);
+	}
+
+
 	//////////////////////////
 	// Drop Events Handlers //
 	//////////////////////////
@@ -60,7 +91,6 @@ app.controller("runeController", ["$scope", "$rootScope", function($scope, $root
 
 			// Check if new rune matches Runic Key
 			var wasKey = compareRuneToKey(newRune, data.runicKey);
-			console.log(wasKey);
 			// VICTORY
 			if (wasKey) {
 				var completeKeyData = linearCompleteKeyData(self.rawData.nodes);
@@ -95,9 +125,14 @@ app.controller("runeController", ["$scope", "$rootScope", function($scope, $root
 	}
 
 
-	//////////////////////////////
-	// Flashing Event Listeners //
-	//////////////////////////////
+	/////////////////////
+	// Event Listeners //
+	/////////////////////
+
+	$rootScope.$on("updateRunes", function (ev) {
+		self.updateNetwork();
+	});
+
 	//Flash a list of runes
 	$rootScope.$on("flashRunes", function (ev, arr) {
 		self.flashingRunes = [];

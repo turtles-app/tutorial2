@@ -1,8 +1,7 @@
 REQUIRED COMPONENTS
 	- INSPECTOR
 		-Tools:
-			-Inspecting Trash --LEO --> DUE Saturday 23/7 
-				- Give it drag data and custom-bothable directive
+			-Overhaul creation of runes
 		-Sigils:
 			-Sigil Composition Tree Positioning
 		-Runes:
@@ -12,8 +11,6 @@ REQUIRED COMPONENTS
 	- RUNE TREE
 		-Image generation for all possible runes
 	- RUNE CRAFTER
-		-Clear crafter with trashcan (both ways)
-		-Runic Key rendered in inspector
 		-Cleanup of justification positioning		
 
 

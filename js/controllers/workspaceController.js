@@ -57,14 +57,14 @@ app.controller("workspaceController",["$rootScope", "$scope",function($rootScope
 
 
 			case "stone":
-				if (self.tool === "crafter") {
-					var newStone = data.stones[dragData.index]
-					// var newStone = data.stones.splice(dragData.index, 1)[0];
-					// data.stones = data.stones.concat(data.selectedStones);
-					// data.stones.sort(sortGroup);
-					data.selectedStones = [newStone];
-				} else {
-					data.selectedStones.push(data.stones.splice(dragData.index, 1)[0]);
+				var newStone = data.stones[dragData.index]
+				switch (self.tool) {
+					case "crafter":
+						data.selectedStones = [newStone];
+						break;
+					case "forge":
+						data.selectedStones.push(newStone);
+						break;
 				}
 				break;
 			case "sigil":

@@ -30,6 +30,13 @@ app.controller("sigilController", ["$scope", "$rootScope", function($scope, $roo
 					res.putIn(stone);
 				});
 				data.sigils.push(res);
+				data.selectedStones.forEach(function (stone) {
+					var newRune = new Fact(stone.name, true, res.equivalents[0]);
+					newRune.groupIndex = data.runes.length;
+					newRune.setType = 'sigil';
+					data.runes.push(newRune);
+					$rootScope.$broadcast("updateRunes");
+				});
 				data.stones = data.stones.concat(data.selectedStones.splice(0, data.selectedStones.length));
 				data.stones.sort(sortGroup);
 				break;
