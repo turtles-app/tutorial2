@@ -182,21 +182,19 @@
 	left: 53%;
 	bottom: 110%;
 	height: 150%;	
-	width: 100%;
+	width: 50%;
 }
 
 #sigilRequirements {
 	display: block;
 	position: absolute;
 	height: 45%;
-	width: 15%;
 }
 
 #stoneRequirements {
 	display: block;
 	position: absolute;
 	height: 45%;
-	width: 15%;
 	top: 50%;
 }
 

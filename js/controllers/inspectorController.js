@@ -1,4 +1,4 @@
-app.controller("inspectorController", ['$scope', function ($scope) {
+app.controller("inspectorController", ['$rootScope','$scope', function($rootScope, $scope) {
 	var data = $scope.data
 	var self = this;
 
@@ -50,6 +50,7 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 
 	// drop handler helper
 	self.drop = function () {
+		console.log(dragData);
 		self.target = null;
 		self.content = "";
 		self.img = "";
@@ -65,7 +66,6 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				self.img = "./img/" + self.target.name + ".png";
 				self.resonantSigils = self.target.knownContainingSets(data.runes, data.sigils);
 				self.relevantRunes = self.target.relevantFacts(data.runes);
-				console.log(self.relevantRunes);
 				break;
 			case 'sigil':
 				self.target = data.sigils[dragData.index];
@@ -132,10 +132,40 @@ app.controller("inspectorController", ['$scope', function ($scope) {
 				self.img = "./img/trash.png"
 				break;
 		}
+		$scope.$apply();
 		dragData = {
 			type: "",
-			index: null
+			index: null,
 		};
-		$scope.$apply();
-	};
-}]);
+	}; //end of drop handler
+
+	$rootScope.$on('trashInspector', function(ev, data){
+		switch(data.type){
+			case "inspectedTool":
+			case "inspectedRune":
+			case "inspectedSigil":
+			case "inspectedStone":
+			case "runicKey":
+			case "selectedTool":
+				self.tool = null;
+				self.runes = [];
+				// initialize inspector data
+				self.targetType = ""; //Type of thing selected
+				self.target = null; //Thing being selected
+				self.content = "" //Core explanation text of selected thing
+				self.sigilTreeData = null; //Stores visjs network data
+				self.img = "";
+				self.network = null;
+				self.resonantStones = []; //Stones resonating with inspected sigil
+				self.resonantSigils = [] //Sigils resonating with inspected stone
+				self.relevantRunes =  [] //Runes relating to inspected thing
+				$rootScope.$apply();
+				dragData = {
+					type: "",
+					index: null,
+				};
+				break;
+		}
+	});
+}]);	
+

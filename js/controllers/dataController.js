@@ -54,15 +54,15 @@ app.controller("dataController", ['$rootScope', "$scope", function($rootScope, $
 
 	// Runic Key instantiations
 		// First Runic Key (any Stone, Sigil not alpha)
-			// self.sigilRequirements = new sigilRequirements(true, [], ["&alpha;",], null, null, null);
-			// self.stoneRequirements = new stoneRequirements(false, [], []);
+			self.sigilRequirements = new sigilRequirements(true, [], ["&alpha;",], null, null, null);
+			self.stoneRequirements = new stoneRequirements(false, [], []);
 		// Second Runic Key ()
 			// self.sigilRequirements = new sigilRequirements(false, [], [], null, null, null);
 			// self.stoneRequirements = new stoneRequirements(true, ["emerald"], []);
 		// Third Runic Key
-			self.sigilRequirements = new sigilRequirements(false, [], [], null, null, null);
-			self.stoneRequirements = new stoneRequirements(true, [], ["ruby", "topaz", "emerald"]);
-	//Initialize Runic Key
+			// self.sigilRequirements = new sigilRequirements(false, [], [], null, null, null);
+			// self.stoneRequirements = new stoneRequirements(true, [], ["ruby", "topaz", "emerald"]);
+	//Initialize Runic Key(redone at trashInspector)
 	self.runicKey = new runicKey(self.sigilRequirements, self.stoneRequirements);
 	//Put stones in sigils
 	self.alpha.putIn(self.ruby);
@@ -132,7 +132,6 @@ app.controller("dataController", ['$rootScope', "$scope", function($rootScope, $
 		self.tools.push(data.tool);
 		self.selectedStones = [];
 		self.selectedSigils = [];
-		console.log("tool trashed");
 		$scope.$apply();
 		// self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
 		// self.stones.sort(sortGroup);		
@@ -147,4 +146,5 @@ app.controller("dataController", ['$rootScope', "$scope", function($rootScope, $
 		// self.stones = self.stones.concat(self.selectedStones.splice(0, self.selectedStones.length));
 		// self.stones.sort(sortGroup);
 	});
+
 }]);

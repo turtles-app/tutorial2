@@ -5,12 +5,18 @@ app.controller("toolController", ['$rootScope', '$scope', function($rootScope, $
 
 
 	self.trashAllowed = function(){
+		console.log(dragData.type);
 		switch (dragData.type){
 			case "selectedTool":
 			case "fusedSigil":
 			case "forgeSigil":
 			case "crafterResult":
 			case "runeOutline":
+			case "runicKey":
+			case "inspectedTool":
+			case "inspectedRune":
+			case "inspectedSigil":
+			case "inspectedStone":
 				return true;
 				break;
 			default: 
@@ -21,10 +27,20 @@ app.controller("toolController", ['$rootScope', '$scope', function($rootScope, $
 
 
 	self.trashDrop = function(){
-		$rootScope.$broadcast('trashDrop', {type : dragData.type}); //broadcast to workspace
-		dragData.type= "";
-		dragData.index = null;
+		switch(dragData.type){
+			case "inspectedTool":
+			case "inspectedRune":
+			case "inspectedSigil":
+			case "inspectedStone":
+			case "runicKey":
+				$rootScope.$broadcast('trashInspector', {type:dragData.type})
+				break;
+			default:
+				$rootScope.$broadcast('', {type : dragData.type}); //broadcast to workspace
+				break;
+			dragData.type= "";
+			dragData.index = null;
+		}		
 	};
-
 
 }]);

@@ -10,6 +10,7 @@ app.directive("customDraggable", function(){
 			var el = element[0];
 			// Drag event handler
 			el.addEventListener("dragstart", function(ev){
+				console.log(dragData);
 				dragData.index = scope.index;
 				dragData.type = scope.type;
 			});

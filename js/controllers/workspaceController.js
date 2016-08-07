@@ -1,4 +1,4 @@
-app.controller("workspaceController",["$rootScope", "$scope",function($rootScope, $scope){
+app.controller("workspaceController",["$rootScope", "$scope", function($rootScope, $scope){
 	var self = this;
 	var data = $scope.data;
 	/*

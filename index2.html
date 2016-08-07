@@ -144,7 +144,7 @@
 					Inspector
 					<div id="inspectorContainer" ng-show="inspector.targetType==='sigil'"></div>
 				</div>
-				<img ng-if="inspector.img!=''" ng-src="{{inspector.img}}" class="inspectedTool">
+				<img ng-if="inspector.img!=''" custom-draggable index="null" type="'inspectedTool'" ng-src="{{inspector.img}}" class="inspectedTool">
 				<div id="inspectorTextLine">
 					<p ng-bind-html="inspector.content | html">
 					<!-- {{inspector.content}} -->
@@ -153,7 +153,7 @@
 					<div ng-show="inspector.targetType==='sigil'">
 						<!-- Related Stones -->
 						<p>Known Resonant Stones</p>
-						<img ng-repeat="stone in inspector.resonantStones" ng-src="./img/{{stone.name}}.png" class="inspectorResonantStone">
+						<img ng-repeat="stone in inspector.resonantStones" ng-src="./img/{{stone.name}}.png" class="inspectorResonantStone" custom-draggable type="'inspectedSigil'" index="null">
 						<!-- Related Runes -->
 						<div id="inspectSigil-runes">
 							<div id="inspectSigil-runeText">Runes inscribed with 
@@ -168,12 +168,12 @@
 						</div>	
 						<p ng-show="!inspector.target.simple" ng-bind-html="inspector.target.strEquivalents[1] | html" id="inspectorSigilLongName"></p>					
 					</div>
-					<div ng-show="inspector.targetType === 'stone'">
+					<div ng-show="inspector.targetType === 'stone'" >
 						<div id="inspectStone-sigils">
 							<p>Known Resonant Sigils</p>
 							<div ng-repeat="sigil in inspector.resonantSigils" class="inspectorResonantSigil">
 								<p ng-bind-html="sigil.strEquivalents[sigil.eqActiveIndex] | html" class="inspectorResonantSigilStr"></p>
-								<img  ng-src="./img/{{sigil.type}}.png" class="inspectorResonantSigilImg">
+								<img  ng-src="./img/{{sigil.type}}.png" class="inspectorResonantSigilImg"custom-draggable type="'inspectedStone'" index="null">
 							</div>
 						</div>
 						<div id="inspectStone-runes">

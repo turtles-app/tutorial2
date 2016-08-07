@@ -9,6 +9,7 @@ app.directive("customDroppable", function(){
 			var el = element[0];
 			// Allow drop if drop is valid
 			el.addEventListener("dragover", function(ev){
+				console.log(dragData);
 				var checkDrop = scope.dropAllowed();
 				if (checkDrop()){
 					ev.preventDefault();
