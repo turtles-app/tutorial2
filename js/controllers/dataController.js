@@ -57,8 +57,11 @@ app.controller("dataController", ['$rootScope', "$scope", function($rootScope, $
 			// self.sigilRequirements = new sigilRequirements(true, [], ["&alpha;",], null, null, null);
 			// self.stoneRequirements = new stoneRequirements(false, [], []);
 		// Second Runic Key ()
+			// self.sigilRequirements = new sigilRequirements(false, [], [], null, null, null);
+			// self.stoneRequirements = new stoneRequirements(true, ["emerald"], []);
+		// Third Runic Key
 			self.sigilRequirements = new sigilRequirements(false, [], [], null, null, null);
-			self.stoneRequirements = new stoneRequirements(true, ["emerald"], []);
+			self.stoneRequirements = new stoneRequirements(true, [], ["ruby", "topaz", "emerald"]);
 	//Initialize Runic Key
 	self.runicKey = new runicKey(self.sigilRequirements, self.stoneRequirements);
 	//Put stones in sigils
