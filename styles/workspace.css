@@ -106,9 +106,9 @@
 #runeOutline {
 	display: inline-block;
 	position: absolute;
-	height: 90%;
-	width: 90%;
-	left: 5%;
+	width: 55%;
+	left: 22%;
+	top: 5%;
 }
 
 #sigilOutline {
@@ -204,4 +204,33 @@
 	position: absolute;
 	left: 50.25%;
 	top: 20%;
+}
+
+/*Recipes*/
+#recipeBar-fuse {
+	position: absolute;
+	display: block;
+	border: 2px solid purple;
+	width: 13%;
+	height: 74.5%;
+	top: 25%;
+
+}
+
+#recipeBar-trim {
+	position: absolute;
+	display: block;
+	border: 2px solid purple;
+	width: 13%;
+	height: 74.5%;	
+	left: 86.5%;
+	top: 25%;
+
+}
+
+.recipe {
+	position: relative;
+	display: inline-block;
+	width: 95%;
+	top: 2%;
 }

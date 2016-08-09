@@ -85,6 +85,15 @@
 					</div>
 					<!-- Rune Crafter Workspace -->
 					<div ng-if="workspace.tool ==='crafter'" custom-droppable drop-allowed="workspace.dropAllowed" on-drop="workspace.drop" >
+
+						<!-- Recipes -->
+						<div id="recipeBar-fuse">
+							<img class="recipe" src="./img/recipe1.png">
+							<img class="recipe" src="./img/recipe1.png">
+							<img class="recipe" src="./img/recipe1.png">
+							<img class="recipe" src="./img/recipe1.png">
+						</div>
+						<div id="recipeBar-trim"></div>
 						<!-- Outlines -->
 						<img ng-hide="data.selectedSigils.length > 0 && data.selectedStones.length > 0" id="runeOutline" custom-draggable index="null" type="'runeOutline'" src="./img/rune-outline.png">
 						<!-- Selected Components -->
